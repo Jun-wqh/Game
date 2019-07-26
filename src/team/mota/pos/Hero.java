@@ -1,6 +1,5 @@
 package team.mota.pos;
 
-import team.mota.Door;
 import team.mota.panel.MotaMap;
 
 import java.util.HashMap;
@@ -13,6 +12,7 @@ public class Hero extends Position {
 
     public Map<String, Integer> article = new HashMap<>();
     Integer[][] maps;
+    public String msg = null;
 
     public Hero(Integer x, Integer y, Integer map) {
         this.x = x;
@@ -38,14 +38,8 @@ public class Hero extends Position {
         if (article.get(name) >= count) {
             article.put(name, article.get(name) - count);
             return true;
-        }
-        return false;
-    }
-
-    public boolean openDoor(Door door) {
-        if (article.get(door.color + "Key") > 0) {
-            add(door.color + "Key", 1);
-            return true;
+        } else {
+            msg = "道具不足";
         }
         return false;
     }
@@ -57,7 +51,6 @@ public class Hero extends Position {
         }
         return false;
     }
-
 
     public Boolean atk(Monster monster) {
         int hp = monster.hp;
@@ -94,41 +87,16 @@ public class Hero extends Position {
         }
     }
 
-    //加血
-    public boolean addHp(String colorhp) {
-        int hp = 0;
-        if (colorhp.equals("red")) {
-            hp = 100;
-        }
-        if (colorhp.equals("blue")) {
-            hp = 200;
-        }
-        if (colorhp.equals("green")) {
-            hp = 400;
-        }
-        article.put("hp", article.get("hp") + hp);
-        return true;
-    }
-
-    //加属性
-    public boolean addProperty(String crystal) {
-        if (crystal.equals("red")) {
-            use("atk", 1);
-        }
-        if (crystal.equals("blue")) {
-            use("dct", 1);
-        }
-        return true;
-    }
-
     public boolean move(int x, int y) {
         int rx = this.x + x;
         int ry = this.y + y;
         Boolean result = false;
+        boolean level = false;
         if (rx >= 0 && rx < 11 && ry >= 0 && ry < 11) {
             // 事件处理
             Integer even = maps[rx][ry];
             switch (even) {
+                // 道具
                 case MotaMap.R:
                 case MotaMap.B:
                 case MotaMap.Y:
@@ -137,9 +105,11 @@ public class Hero extends Position {
                 case MotaMap.W:
                 case MotaMap.J:
                 case MotaMap.K:
+                case MotaMap.A:
                     Article article = MonstrtMap.articleMap.get(even);
                     result = this.add(article.name, article.value);
                     break;
+                // 打怪
                 case MotaMap.a:
                 case MotaMap.b:
                 case MotaMap.c:
@@ -154,21 +124,77 @@ public class Hero extends Position {
                     Boolean checkatk = this.checkatk(monster);
                     if (checkatk) {
                         result = this.atk(monster);
+                        if (result) {
+                            this.add("money", monster.money);
+                        }
                     } else {
-                        System.out.println("打不过");
+                        msg = "打不过";
                     }
                     break;
                 case MotaMap.Q:
                     break;
                 case MotaMap.L:
+                case MotaMap.O:
                     result = true;
                     break;
+                //开门
                 case MotaMap.D:
                     result = this.use("yellowKey", 1);
+                    break;
+                case MotaMap.E:
+                    result = this.use("blueKey", 1);
+                    break;
+                case MotaMap.F:
+                    result = this.use("redKey", 1);
+                    break;
+                //上楼
+                case MotaMap.T:
+                    this.article.put("level", this.article.get("level") + 1);
+                    // 位置
+                    maps = MotaMap.motemap.get(this.article.get("level"));
+                    boolean flagt = false;
+                    for (int i = 0; i < maps.length; i++) {
+                        if (flagt) {
+                            break;
+                        }
+                        for (int j = 0; j < maps[i].length; j++) {
+                            if (maps[i][j] == MotaMap.H) {
+                                this.x = i;
+                                this.y = j;
+                                flagt = true;
+                                break;
+                            }
+                        }
+                    }
+                    level = true;
+                    result = true;
+                    break;
+                //下楼
+                case MotaMap.S:
+                    this.article.put("level", this.article.get("level") - 1);
+                    // 位置
+                    maps = MotaMap.motemap.get(this.article.get("level"));
+                    boolean flags = false;
+                    for (int i = 0; i < maps.length; i++) {
+                        if (flags) {
+                            break;
+                        }
+                        for (int j = 0; j < maps[i].length; j++) {
+                            if (maps[i][j] == MotaMap.H) {
+                                this.x = i;
+                                this.y = j;
+                                flags = true;
+                                break;
+                            }
+                        }
+                    }
+                    level = true;
+                    result = true;
+                    break;
                 default:
                     break;
             }
-            if (result) {
+            if (result && !level) {
                 maps[this.x][this.y] = MotaMap.L;
                 maps[rx][ry] = 100;
                 this.x = rx;
@@ -192,12 +218,6 @@ public class Hero extends Position {
 
     public boolean right() {
         return move(0, 1);
-    }
-
-    public void show() {
-        System.out.println("x=" + x);
-        System.out.println("y=" + y);
-        System.out.println(article);
     }
 
     // private Integer exp;

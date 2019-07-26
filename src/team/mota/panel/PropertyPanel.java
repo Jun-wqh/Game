@@ -63,6 +63,9 @@ public class PropertyPanel extends JPanel {
             this.add(labels[i][0]);
             this.add(labels[i][1]);
         }
+        labels[8][0] = new JLabel();
+        labels[8][0].setHorizontalAlignment(JLabel.RIGHT);
+        this.add(labels[8][0]);
     }
 
     public void setHero(Hero hero) {
@@ -72,6 +75,9 @@ public class PropertyPanel extends JPanel {
                 labels[propertyMap.get(k).xx][1].setText(v.toString());
             }
         });
-
+        if (hero.msg != null) {
+            labels[8][0].setText(hero.msg);
+            hero.msg = null;
+        }
     }
 }
