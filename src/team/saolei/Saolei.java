@@ -20,6 +20,7 @@ public class Saolei extends JPanel {
     JButton[][] jButton;
     Integer xx;
     Integer yy;
+
     int sum = 0;
     int leishu = 0;
     Random random = new Random();
@@ -27,6 +28,10 @@ public class Saolei extends JPanel {
     int first = 0;
     int reload = 1;
     Font font = new Font("宋体", Font.BOLD, 16);
+    ImageIcon shakalaka = new ImageIcon("src\\team\\saolei\\res\\shakalaka.jpg");
+    int width = 60;
+    int height = 60;
+
 
     public void setLevel(int level) {
         this.level = level;
@@ -66,6 +71,9 @@ public class Saolei extends JPanel {
                 jButton[i][j].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        if (jButton[finalI][finalJ].getIcon() != null) {
+                            return;
+                        }
                         if (first == 0 && reload == 1) {
                             if (LEI[finalI][finalJ] == 1) {
                                 LEI[finalI][finalJ] = 0;
@@ -237,10 +245,15 @@ public class Saolei extends JPanel {
                     public void mouseClicked(MouseEvent e) {
                         if (e.getButton() == MouseEvent.BUTTON3) {
                             if (LEIS[finalI][finalJ][0] != 1) {
-                                if (jButton[finalI][finalJ].getText().equals("*")) {
-                                    jButton[finalI][finalJ].setText("");
+                                if (jButton[finalI][finalJ].getIcon() != null) {
+                                    jButton[finalI][finalJ].setIcon(null);
                                 } else {
-                                    jButton[finalI][finalJ].setText("*");
+                                    shakalaka.setImage(shakalaka.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+                                    jButton[finalI][finalJ].setIcon(shakalaka);
+                                }
+                            } else {
+                                if (jButton[finalI][finalJ].getIcon() != null) {
+                                    jButton[finalI][finalJ].setIcon(null);
                                 }
                             }
                         }

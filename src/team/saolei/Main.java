@@ -12,9 +12,8 @@ public class Main {
         Panel panel = new Panel();
         frame.add(panel, BorderLayout.NORTH);
 //        Saolei sl = new Saolei(20, 20);
-        Saolei sl = new Saolei(10, 10);
-        frame.setBounds(0, 0, 900, 900);
-        frame.setBounds(0, 0, 450, 450);
+        Saolei sl = new Saolei(10, 15);
+        frame.setBounds(0, 0, 900, 600);
         frame.setLocationRelativeTo(null);
         sl.setLevel(1);
         frame.add(sl, BorderLayout.CENTER);
