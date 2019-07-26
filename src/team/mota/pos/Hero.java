@@ -207,15 +207,12 @@ public class Hero extends Position {
     public boolean up() {
         return move(-1, 0);
     }
-
     public boolean down() {
         return move(1, 0);
     }
-
     public boolean left() {
         return move(0, -1);
     }
-
     public boolean right() {
         return move(0, 1);
     }
