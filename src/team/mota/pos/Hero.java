@@ -99,6 +99,21 @@ public class Hero extends Position {
         }
     }
 
+    public boolean addHp(String colorhp) {
+        int hp = 0;
+        if (colorhp.equals("red")) {
+            hp = 100;
+        }
+        if (colorhp.equals("blue")) {
+            hp = 200;
+        }
+        if (colorhp.equals("green")) {
+            hp = 400;
+        }
+        article.put("hp", article.get("hp") + hp);
+        return true;
+    }
+
     public boolean move(int x, int y) {
         int rx = this.x + x;
         int ry = this.y + y;
@@ -107,6 +122,9 @@ public class Hero extends Position {
             // 事件处理
             Integer even = maps[rx][ry];
             switch (even) {
+                case MoteMap.U:
+                    result = this.addHp("red");
+                    break;
                 case MoteMap.Q:
                     break;
                 case MoteMap.L:

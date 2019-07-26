@@ -10,12 +10,14 @@ package team.mota.pos;
  * 注意：本内容仅限于厦门智强软件科技有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
 public class Monster extends Position {
+    public String name;
     public Integer hp;
     public Integer atk;
     public Integer dct;
     public Integer money;
 
-    public Monster(Integer hp, Integer atk, Integer dct, Integer money) {
+    public Monster(String name,Integer hp, Integer atk, Integer dct, Integer money) {
+        this.name = name;
         this.hp = hp;
         this.atk = atk;
         this.dct = dct;
