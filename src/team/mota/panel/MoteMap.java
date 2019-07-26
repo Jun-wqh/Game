@@ -1,4 +1,4 @@
-package team.mota;
+package team.mota.panel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,40 +15,40 @@ import java.util.Map;
 public class MoteMap {
     public static Map<Integer, Integer[][]> motemap = new HashMap<>();
     //路
-    final static int L = 10;
-    final static int H = 100;
+    public final static int L = 10;
+    public final static int H = 100;
     // 钥匙
-    final static int R = 1;
-    final static int B = 2;
-    final static int Y = 3;
+    public final static int R = 1;
+    public final static int B = 2;
+    public final static int Y = 3;
     // 血
-    final static int U = 4;
-    final static int V = 5;
-    final static int W = 6;
+    public final static int U = 4;
+    public final static int V = 5;
+    public final static int W = 6;
     //攻击
-    final static int J = 7;
-    final static int K = 8;
+    public final static int J = 7;
+    public final static int K = 8;
     //墙
-    final static int Q = 50;
+    public final static int Q = 50;
     //门
-    final static int D = 51;
-    final static int E = 52;
-    final static int F = 53;
+    public final static int D = 51;
+    public final static int E = 52;
+    public final static int F = 53;
 
     //楼梯
-    final static int T = 54;
+    public final static int T = 54;
     //怪物
-    final static int a = 11;// 绿球
-    final static int b = 12;// 红球
-    final static int c = 13;
-    final static int d = 14;
-    final static int e = 15;// 骷髅
-    final static int f = 16;// 骷髅队长
-    final static int g = 17;// 小蝙蝠
-    final static int h = 18;// 大蝙蝠
-    final static int i = 19;// 低级法师
-    final static int j = 20;
-    final static int k = 21;// 飞行器
+    public final static int a = 11;// 绿球
+    public final static int b = 12;// 红球
+    public final static int c = 13;
+    public final static int d = 14;
+    public final static int e = 15;// 骷髅
+    public final static int f = 16;// 骷髅队长
+    public final static int g = 17;// 小蝙蝠
+    public final static int h = 18;// 大蝙蝠
+    public final static int i = 19;// 低级法师
+    public final static int j = 20;
+    public final static int k = 21;// 飞行器
 
 
     static {

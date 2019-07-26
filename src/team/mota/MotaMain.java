@@ -1,5 +1,7 @@
 package team.mota;
 
+import team.mota.panel.MotaPanel;
+
 import javax.swing.*;
 import java.awt.*;
 

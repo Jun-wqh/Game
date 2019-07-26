@@ -1,4 +1,7 @@
-package team.mota;
+package team.mota.pos;
+
+import team.mota.Door;
+import team.mota.panel.MoteMap;
 
 import java.util.HashMap;
 import java.util.Map;

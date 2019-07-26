@@ -1,4 +1,4 @@
-package team.mota;
+package team.mota.pos;
 
 /**
  * @version V1.0.0
@@ -9,7 +9,7 @@ package team.mota;
  * @Copyright:2019 All rights reserved.
  * 注意：本内容仅限于厦门智强软件科技有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
-class Monster extends Position {
+public class Monster extends Position {
     public Integer hp;
     public Integer atk;
     public Integer dct;

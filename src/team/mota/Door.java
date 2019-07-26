@@ -1,5 +1,7 @@
 package team.mota;
 
+import team.mota.pos.Position;
+
 /**
  * @version V1.0.0
  * @ClassName: Door
@@ -9,6 +11,6 @@ package team.mota;
  * @Copyright:2019 All rights reserved.
  * 注意：本内容仅限于厦门智强软件科技有限公司内部传阅，禁止外泄以及用于其他的商业目
  */
-class Door extends Position {
+public class Door extends Position {
     public String color;
 }

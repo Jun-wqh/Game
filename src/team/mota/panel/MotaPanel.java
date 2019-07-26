@@ -1,4 +1,6 @@
-package team.mota;
+package team.mota.panel;
+
+import team.mota.pos.Hero;
 
 import javax.swing.*;
 import java.awt.*;

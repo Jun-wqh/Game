@@ -1,6 +1,6 @@
-package team.mota;
+package team.mota.pos;
 
-class Position {
+public class Position {
     public Integer x;
     public Integer y;
     public String img;
