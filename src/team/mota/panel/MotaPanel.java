@@ -24,7 +24,7 @@ public class MotaPanel extends JPanel {
         propertyPanel.setHero(hero);
         this.setLayout(new GridLayout(11, 11));
         this.setBackground(Color.lightGray);
-        Integer[][] maps = MoteMap.motemap.get(1);
+        Integer[][] maps = MotaMap.motemap.get(1);
         labels = new JLabel[11][11];
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {

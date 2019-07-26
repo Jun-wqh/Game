@@ -1,7 +1,6 @@
 package team.mota.panel;
 
 import team.mota.pos.Hero;
-import team.mota.pos.Property;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,9 +31,9 @@ public class PropertyPanel extends JPanel {
         property[2] = new Property("攻击", 2, 0, null, 0);
         property[3] = new Property("防御", 3, 0, null, 0);
         property[4] = new Property("金币", 4, 0, null, 0);
-        property[5] = new Property("红钥匙", 5, 0, MoteMap.R, 0);
-        property[6] = new Property("蓝钥匙", 6, 0, MoteMap.B, 0);
-        property[7] = new Property("黄钥匙", 7, 0, MoteMap.Y, 0);
+        property[5] = new Property("红钥匙", 5, 0, MotaMap.R, 0);
+        property[6] = new Property("蓝钥匙", 6, 0, MotaMap.B, 0);
+        property[7] = new Property("黄钥匙", 7, 0, MotaMap.Y, 0);
         propertyMap.put("level", property[0]);
         propertyMap.put("hp", property[1]);
         propertyMap.put("atk", property[2]);

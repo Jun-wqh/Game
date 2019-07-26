@@ -1,26 +1,37 @@
 package team.mota.pos;
 
+import team.mota.panel.MotaMap;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @version V1.0.0
- * @ClassName: MonstrtMap
- * @Description:
- * @author: 厦门智强软件科技
- * @date: 2019/7/26
- * @Copyright:2019 All rights reserved.
- * 注意：本内容仅限于厦门智强软件科技有限公司内部传阅，禁止外泄以及用于其他的商业目
+ * @author Jun-wqh seeyul
  */
 public class MonstrtMap {
-    static Map<String, Object> monstrtMap = new HashMap();
+    public static Map<Integer, Monster> monsterMap = new HashMap<>();
 
     static {
-        monstrtMap.put("绿史莱姆", new Monster("绿史莱姆", 35, 18, 1, 1));
-        monstrtMap.put("红史莱姆", new Monster("红史莱姆", 45, 20, 2, 2));
-        monstrtMap.put("小蝙蝠", new Monster("小蝙蝠", 35, 38, 3, 3));
-        monstrtMap.put("初级法师", new Monster("初级法师", 60, 32, 8, 5));
-        monstrtMap.put("骷髅人", new Monster("骷髅人", 50, 42, 6, 6));
-        monstrtMap.put("骷髅士兵", new Monster("骷髅士兵", 55, 52, 12, 8));
+        monsterMap.put(MotaMap.a, new Monster("绿史莱姆", 35, 18, 1, 1));
+        monsterMap.put(MotaMap.b, new Monster("红史莱姆", 45, 20, 2, 2));
+        monsterMap.put(MotaMap.g, new Monster("小蝙蝠", 35, 38, 3, 3));
+        monsterMap.put(MotaMap.i, new Monster("初级法师", 60, 32, 8, 5));
+        monsterMap.put(MotaMap.e, new Monster("骷髅人", 50, 42, 6, 6));
+        monsterMap.put(MotaMap.f, new Monster("骷髅士兵", 55, 52, 12, 8));
     }
+
+    public static Map<Integer, Article> articleMap = new HashMap<>();
+
+    static {
+        articleMap.put(MotaMap.R, new Article("redKey", 1));
+        articleMap.put(MotaMap.B, new Article("buleKey", 1));
+        articleMap.put(MotaMap.Y, new Article("yellowKey", 1));
+        articleMap.put(MotaMap.U, new Article("hp", 100));
+        articleMap.put(MotaMap.V, new Article("hp", 200));
+        articleMap.put(MotaMap.W, new Article("hp", 400));
+        articleMap.put(MotaMap.J, new Article("atk", 1));
+        articleMap.put(MotaMap.K, new Article("dct", 1));
+    }
+
+
 }

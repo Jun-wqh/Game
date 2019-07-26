@@ -1,7 +1,7 @@
 package team.mota.pos;
 
 import team.mota.Door;
-import team.mota.panel.MoteMap;
+import team.mota.panel.MotaMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,12 +17,12 @@ public class Hero extends Position {
     public Hero(Integer x, Integer y, Integer map) {
         this.x = x;
         this.y = y;
-        maps = MoteMap.motemap.get(map);
+        maps = MotaMap.motemap.get(map);
         article.put("level", 1);
-        article.put("atk", 5);
-        article.put("dct", 2);
+        article.put("atk", 10);
+        article.put("dct", 10);
         article.put("money", 0);
-        article.put("hp", 100);
+        article.put("hp", 600);
         article.put("redKey", 1);
         article.put("blueKey", 1);
         article.put("yellowKey", 1);
@@ -33,16 +33,13 @@ public class Hero extends Position {
         return true;
     }
 
+
     public boolean use(String name, Integer count) {
         if (article.get(name) >= count) {
             article.put(name, article.get(name) - count);
             return true;
         }
         return false;
-    }
-
-    public boolean addKey(String name) {
-        return add(name, 1);
     }
 
     public boolean openDoor(Door door) {
@@ -63,6 +60,7 @@ public class Hero extends Position {
 
 
     public Boolean atk(Monster monster) {
+        int hp = monster.hp;
         if (article.get("atk") <= monster.dct) {
             return false;
         }
@@ -70,8 +68,8 @@ public class Hero extends Position {
             return true;
         }
         for (; ; ) {
-            monster.hp -= article.get("atk") - monster.dct;
-            if (monster.hp <= 0) {
+            hp -= article.get("atk") - monster.dct;
+            if (hp <= 0) {
                 return true;
             }
             article.put("hp", article.get("hp") + article.get("dct") - monster.atk);
@@ -96,6 +94,7 @@ public class Hero extends Position {
         }
     }
 
+    //加血
     public boolean addHp(String colorhp) {
         int hp = 0;
         if (colorhp.equals("red")) {
@@ -111,6 +110,17 @@ public class Hero extends Position {
         return true;
     }
 
+    //加属性
+    public boolean addProperty(String crystal) {
+        if (crystal.equals("red")) {
+            use("atk", 1);
+        }
+        if (crystal.equals("blue")) {
+            use("dct", 1);
+        }
+        return true;
+    }
+
     public boolean move(int x, int y) {
         int rx = this.x + x;
         int ry = this.y + y;
@@ -119,30 +129,47 @@ public class Hero extends Position {
             // 事件处理
             Integer even = maps[rx][ry];
             switch (even) {
-                case MoteMap.U:
-                    result = this.addHp("red");
+                case MotaMap.R:
+                case MotaMap.B:
+                case MotaMap.Y:
+                case MotaMap.U:
+                case MotaMap.V:
+                case MotaMap.W:
+                case MotaMap.J:
+                case MotaMap.K:
+                    Article article = MonstrtMap.articleMap.get(even);
+                    result = this.add(article.name, article.value);
                     break;
-                case MoteMap.Q:
+                case MotaMap.a:
+                case MotaMap.b:
+                case MotaMap.c:
+                case MotaMap.d:
+                case MotaMap.e:
+                case MotaMap.f:
+                case MotaMap.g:
+                case MotaMap.h:
+                case MotaMap.i:
+                case MotaMap.j:
+                    Monster monster = MonstrtMap.monsterMap.get(even);
+                    Boolean checkatk = this.checkatk(monster);
+                    if (checkatk) {
+                        result = this.atk(monster);
+                    } else {
+                        System.out.println("打不过");
+                    }
                     break;
-                case MoteMap.L:
+                case MotaMap.Q:
+                    break;
+                case MotaMap.L:
                     result = true;
                     break;
-                case MoteMap.R:
-                    result = this.addKey("redKey");
-                    break;
-                case MoteMap.B:
-                    result = this.addKey("buleKey");
-                    break;
-                case MoteMap.Y:
-                    result = this.addKey("yellowKey");
-                    break;
-                case MoteMap.D:
+                case MotaMap.D:
                     result = this.use("yellowKey", 1);
                 default:
                     break;
             }
             if (result) {
-                maps[this.x][this.y] = MoteMap.L;
+                maps[this.x][this.y] = MotaMap.L;
                 maps[rx][ry] = 100;
                 this.x = rx;
                 this.y = ry;

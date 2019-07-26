@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author Jun-wqh seeyul
  */
-public class MoteMap {
+public class MotaMap {
     public static Map<Integer, Integer[][]> motemap = new HashMap<>();
     //路
     public final static int L = 10;
@@ -38,16 +38,18 @@ public class MoteMap {
     public final static int b = 12;// 红球
     public final static int c = 13;
     public final static int d = 14;
-    public final static int e = 15;// 骷髅
-    public final static int f = 16;// 骷髅队长
+    public final static int e = 15;// 骷髅人
+    public final static int f = 16;// 骷髅士兵
     public final static int g = 17;// 小蝙蝠
     public final static int h = 18;// 大蝙蝠
     public final static int i = 19;// 低级法师
     public final static int j = 20;// 中级守卫
+
     public final static int k = 21;// 飞行器
-    public final static int l = 21;// 小偷
-    public final static int m = 21;// 奸商
-    public final static int n = 21;// 老头
+
+    public final static int l = 22;// 小偷
+    public final static int m = 23;// 奸商
+    public final static int n = 24;// 老头
 
 
     static {

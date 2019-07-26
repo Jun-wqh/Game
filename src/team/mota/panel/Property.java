@@ -1,4 +1,4 @@
-package team.mota.pos;
+package team.mota.panel;
 
 /**
  * @author Jun-wqh seeyul
