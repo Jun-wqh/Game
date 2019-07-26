@@ -2,7 +2,9 @@ package team.saolei;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * @author Jun-wqh seeyul
+ */
 public class Main {
 
     public static void main(String[] args) {

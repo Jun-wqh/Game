@@ -8,11 +8,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * @version V1.0.0
- * @ClassName: MotaPanel
- * @Description:
- * @author: wqh
- * @date: 2019/7/22
+ * @author Jun-wqh seeyul
  */
 public class MotaPanel extends JPanel {
 
@@ -20,8 +16,12 @@ public class MotaPanel extends JPanel {
     Font f = new Font("宋体", Font.BOLD, 40);
     Hero hero;
 
-    public MotaPanel() {
+    PropertyPanel propertyPanel;
+
+    public MotaPanel(PropertyPanel propertyPanel) {
+        this.propertyPanel = propertyPanel;
         hero = new Hero(10, 5, 1);
+        propertyPanel.setHero(hero);
         this.setLayout(new GridLayout(11, 11));
         this.setBackground(Color.lightGray);
         Integer[][] maps = MoteMap.motemap.get(1);
@@ -72,6 +72,7 @@ public class MotaPanel extends JPanel {
                     icon = new ImageIcon("src\\team\\mota\\res\\100.png");
                     icon.setImage(icon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
                     labels[rx][ry].setIcon(icon);
+                    propertyPanel.setHero(hero);
                     hero.show();
                 } else {
                     System.out.println("移动失败");
