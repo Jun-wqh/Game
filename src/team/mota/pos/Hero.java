@@ -7,21 +7,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @version V1.0.0
- * @ClassName: Hero
- * @Description:
- * @author: wuyu
- * @date: 2019/7/22
+ * @author Jun-wqh seeyul
  */
 public class Hero extends Position {
 
-    Map<String, Integer> article = new HashMap<>();
+    public Map<String, Integer> article = new HashMap<>();
     Integer[][] maps;
 
     public Hero(Integer x, Integer y, Integer map) {
         this.x = x;
         this.y = y;
         maps = MoteMap.motemap.get(map);
+        article.put("level", 1);
         article.put("atk", 5);
         article.put("dct", 2);
         article.put("money", 0);

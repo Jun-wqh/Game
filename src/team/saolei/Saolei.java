@@ -9,8 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.Random;
 
 /**
- * @author: 翩翩袅袅
- * @date: 2019/7/19
+ * @author Jun-wqh seeyul
  */
 public class Saolei extends JPanel {
     // 雷
@@ -27,6 +26,7 @@ public class Saolei extends JPanel {
     int level = 1;
     int first = 0;
     int reload = 1;
+    Font font = new Font("宋体", Font.BOLD, 16);
 
     public void setLevel(int level) {
         this.level = level;
@@ -247,14 +247,12 @@ public class Saolei extends JPanel {
                     }
                 });
 
-                jButton[i][j].setFont(f);
+                jButton[i][j].setFont(font);
                 this.add(jButton[i][j]);
             }
         }
         this.revalidate();
     }
-
-    Font f = new Font("宋体", Font.BOLD, 16);
 
     public Saolei(Integer x, Integer y) {
         xx = x;
