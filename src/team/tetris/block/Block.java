@@ -1,13 +1,15 @@
 package team.tetris.block;
 
-public class Block {
-    protected Integer blocks[][];
-    protected Integer width;
-    protected Integer height;
-    protected Integer status;
+public abstract class Block {
+    public Integer[][] blocks;
+    public Integer width;
+    public Integer height;
+    public Integer status;
 
-    public void turn() {
-
+    public Block() {
     }
+
+
+    public abstract void turn();
 
 }
