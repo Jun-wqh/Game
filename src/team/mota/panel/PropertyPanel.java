@@ -21,7 +21,7 @@ public class PropertyPanel extends JPanel {
     Property[] property;
 
     Map<String, Property> propertyMap = new HashMap<>();
-    Font font = new Font("宋体", Font.BOLD, 30);
+    Font font = new Font("宋体", Font.BOLD, 25);
 
     public PropertyPanel() {
         this.setLayout(new GridLayout(11, 11));
@@ -51,7 +51,7 @@ public class PropertyPanel extends JPanel {
             labels[i][1] = new JLabel();
             if (property[i].icon != null) {
                 ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + property[i].icon + ".png");
-                icon.setImage(icon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+                icon.setImage(icon.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
                 labels[i][0].setIcon(icon);
             } else {
                 labels[i][0].setText(property[i].name);
