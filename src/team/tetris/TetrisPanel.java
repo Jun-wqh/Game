@@ -5,10 +5,14 @@ import team.tetris.block.Block;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Jun-wqh
@@ -21,8 +25,24 @@ public class TetrisPanel extends JPanel {
     Integer turnh;
     Integer turnw;
     Block block;
+    int score = 0;
+    Timer timer;
 
     public TetrisPanel(IntoPanel intoPanel) {
+        timer = new Timer(1000, new ActionListener() {
+
+            /**
+             * Invoked when an action occurs.
+             *
+             * @param e
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clear();
+                turnh++;
+                draw("d");
+            }
+        });
         this.intoPanel = intoPanel;
         this.setLayout(new GridLayout(20, 10));
         blocks = new JLabel[20][10];
@@ -86,6 +106,7 @@ public class TetrisPanel extends JPanel {
 
             }
         });
+        timer.start();
     }
 
     public void clear() {
@@ -154,11 +175,12 @@ public class TetrisPanel extends JPanel {
                     }
                 }
             }
+            // 旋转判断
+            if ("u".equals(key)) {
+                //todo 太难了，放着先
+            }
         }
-        // 旋转判断
-        if ("u".equals(key)) {
 
-        }
         for (int i = 0; i < block.height; i++) {
             for (int j = 0; j < block.width; j++) {
                 if (block.blocks[i][j] == 1) {
@@ -175,7 +197,7 @@ public class TetrisPanel extends JPanel {
                 }
             }
             // 执行消除
-            List<Integer> clearList = new ArrayList<>();
+            Set<Integer> clearList = new HashSet<>();
             for (int i = 0; i < 20; i++) {
                 int count = 0;
                 for (int j = 0; j < 10; j++) {
@@ -188,12 +210,15 @@ public class TetrisPanel extends JPanel {
                 }
             }
             if (clearList.size() > 0) {
+                score += clearList.size();
                 List<Integer[]> newList = new ArrayList<>();
                 for (int i = 19; i >= 0; i--) {
                     if (!clearList.contains(i)) {
                         newList.add(status[i]);
                     }
                 }
+                status = new Integer[20][10];
+                System.out.println(newList.size());
                 for (int i = 19; i >= 0; i--) {
                     if (i > 19 - newList.size()) {
                         status[i] = newList.get(19 - i);
@@ -223,6 +248,6 @@ public class TetrisPanel extends JPanel {
                 }
             }
         }
-
+        intoPanel.setScore(score);
     }
 }

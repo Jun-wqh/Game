@@ -12,10 +12,12 @@ import java.awt.*;
  */
 public class IntoPanel extends JPanel {
 
-    Integer score;
+    Integer score = 0;
     JPanel next;
     JLabel[][] into;
     Block block;
+    JLabel scoretext;
+    Font f = new Font("宋体", Font.BOLD, 30);
 
     public IntoPanel() {
         this.setLayout(new GridLayout(5, 1));
@@ -31,6 +33,10 @@ public class IntoPanel extends JPanel {
             }
         }
         this.add(next);
+        scoretext = new JLabel();
+        scoretext.setText("分数:" + score);
+        scoretext.setFont(f);
+        this.add(scoretext);
         next();
     }
 
@@ -52,5 +58,8 @@ public class IntoPanel extends JPanel {
         return block;
     }
 
-
+    public void setScore(Integer score) {
+        this.score = score;
+        scoretext.setText("分数:" + score);
+    }
 }
