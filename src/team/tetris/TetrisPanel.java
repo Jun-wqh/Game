@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jun-wqh
@@ -15,25 +17,28 @@ public class TetrisPanel extends JPanel {
 
     IntoPanel intoPanel;
     JLabel[][] blocks;
-    Integer turnx;
-    Integer turny;
+    Integer[][] status;
+    Integer turnh;
+    Integer turnw;
     Block block;
 
     public TetrisPanel(IntoPanel intoPanel) {
         this.intoPanel = intoPanel;
         this.setLayout(new GridLayout(20, 10));
         blocks = new JLabel[20][10];
+        status = new Integer[20][10];
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
+                status[i][j] = 0;
                 blocks[i][j] = new JLabel();
                 blocks[i][j].setOpaque(true);
                 this.add(blocks[i][j]);
             }
         }
-        turnx = 1;
-        turny = 5;
+        turnh = 0;
+        turnw = 4;
         block = intoPanel.getNext();
-        draw();
+        draw(null);
         intoPanel.next();
         this.addKeyListener(new KeyListener() {
             @Override
@@ -43,23 +48,33 @@ public class TetrisPanel extends JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                clear();
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_UP:
+                        clear();
+                        if (turnw + block.height > 10) {
+                            turnw = 10 - block.height;
+                        }
                         block.turn();
-                        draw();
+                        draw("u");
                         break;
                     case KeyEvent.VK_DOWN:
-                        turnx++;
-                        draw();
+                        clear();
+                        turnh++;
+                        draw("d");
                         break;
                     case KeyEvent.VK_RIGHT:
-                        turny++;
-                        draw();
+                        clear();
+                        if (turnw < 10 - block.width) {
+                            turnw++;
+                        }
+                        draw("r");
                         break;
                     case KeyEvent.VK_LEFT:
-                        turny--;
-                        draw();
+                        clear();
+                        if (turnw > 0) {
+                            turnw--;
+                        }
+                        draw(null);
                         break;
                     default:
                         break;
@@ -74,23 +89,140 @@ public class TetrisPanel extends JPanel {
     }
 
     public void clear() {
-        for (int i = 0; i < block.width; i++) {
-            for (int j = 0; j < block.height; j++) {
+        for (int i = 0; i < block.height; i++) {
+            for (int j = 0; j < block.width; j++) {
                 if (block.blocks[i][j] == 1) {
-                    blocks[i + turnx - 1][j + turny - 1].setBackground(null);
+                    blocks[i + turnh][j + turnw].setBackground(null);
                 }
             }
         }
     }
 
-    public void draw() {
-        for (int i = 0; i < block.width; i++) {
-            for (int j = 0; j < block.height; j++) {
-                if (block.blocks[i][j] == 1) {
-                    blocks[i + turnx - 1][j + turny - 1].setBackground(Color.BLACK);
+    public void draw(String key) {
+        boolean stop = false;
+        if (turnh + block.height > 20) {
+            turnh--;
+            stop = true;
+        } else {
+            // 障碍物判断
+            if ("d".equals(key)) {
+                boolean[] bottoms = new boolean[block.width];
+                for (int w = 0; w < block.width; w++) {
+                    for (int h = block.height - 1; h >= 0; h--) {
+                        if (block.blocks[h][w] == 1) {
+                            if (turnh + h < 20 && status[turnh + h][turnw + w] == 1) {
+                                bottoms[w] = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (bottoms[w]) {
+                        stop = true;
+                        turnh--;
+                    }
+                }
+            }
+            if ("l".equals(key)) {
+                boolean[] lefts = new boolean[block.height];
+                for (int h = 0; h < block.height; h++) {
+                    for (int w = 0; w < block.width; w++) {
+                        if (block.blocks[h][w] == 1) {
+                            if (turnw + h >= 0 && status[turnh + h][turnw + w] == 1) {
+                                lefts[h] = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (lefts[h]) {
+                        turnw++;
+                    }
+                }
+            }
+            if ("r".equals(key)) {
+                boolean[] rigths = new boolean[block.height];
+                for (int h = 0; h < block.height; h++) {
+                    for (int w = block.width - 1; w >= 0; w--) {
+                        if (block.blocks[h][w] == 1) {
+                            if (turnw + h <= 10 && status[turnh + h][turnw + w] == 1) {
+                                rigths[h] = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (rigths[h]) {
+                        turnw--;
+                    }
                 }
             }
         }
+        // 旋转判断
+        if ("u".equals(key)) {
+
+        }
+        for (int i = 0; i < block.height; i++) {
+            for (int j = 0; j < block.width; j++) {
+                if (block.blocks[i][j] == 1) {
+                    blocks[i + turnh][j + turnw].setBackground(Color.BLACK);
+                }
+            }
+        }
+        if (stop) {
+            for (int h = 0; h < block.height; h++) {
+                for (int w = 0; w < block.width; w++) {
+                    if (block.blocks[h][w] == 1) {
+                        status[h + turnh][w + turnw] = 1;
+                    }
+                }
+            }
+            // 执行消除
+            List<Integer> clearList = new ArrayList<>();
+            for (int i = 0; i < 20; i++) {
+                int count = 0;
+                for (int j = 0; j < 10; j++) {
+                    if (status[i][j] == 1) {
+                        count++;
+                    }
+                }
+                if (count == 10) {
+                    clearList.add(i);
+                }
+            }
+            if (clearList.size() > 0) {
+                List<Integer[]> newList = new ArrayList<>();
+                for (int i = 19; i >= 0; i--) {
+                    if (!clearList.contains(i)) {
+                        newList.add(status[i]);
+                    }
+                }
+                for (int i = 19; i >= 0; i--) {
+                    if (i > 19 - newList.size()) {
+                        status[i] = newList.get(19 - i);
+                    } else {
+                        for (int j = 0; j < status[i].length; j++) {
+                            status[i][j] = 0;
+                        }
+                    }
+                }
+                drawAll();
+            }
+            turnh = 0;
+            turnw = 4;
+            block = intoPanel.getNext();
+            draw(null);
+            intoPanel.next();
+        }
     }
 
+    public void drawAll() {
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (status[i][j] == 1) {
+                    blocks[i][j].setBackground(Color.BLACK);
+                } else {
+                    blocks[i][j].setBackground(null);
+                }
+            }
+        }
+
+    }
 }

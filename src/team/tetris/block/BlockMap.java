@@ -20,7 +20,10 @@ public class BlockMap {
 
     public static Block getBlock() {
         int i = random.nextInt(7);
-        return blockList.get(i);
+        Block block = blockList.get(i);
+        block.status = random.nextInt(block.blockMap.size());
+        block.turn();
+        return block;
     }
 
 }

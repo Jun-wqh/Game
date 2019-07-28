@@ -1,17 +1,6 @@
 package team.tetris.block;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Square extends Block {
-
-    private final Map<Integer, Integer[][]> blockMap = new HashMap<>();
-    private final Map<Integer, Integer[]> blockStatusMap = new HashMap<>();
-
-    @Override
-    public void turn() {
-
-    }
 
     public Square() {
         blocks = new Integer[4][1];
