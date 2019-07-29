@@ -18,6 +18,16 @@ public abstract class Block {
         this.width = blockStatusMap.get(status)[1];
     }
 
-    public Block() {
+    public void turni() {
+        status = (status + 3) % blockMap.size();
+        this.blocks = blockMap.get(status);
+        this.height = blockStatusMap.get(status)[0];
+        this.width = blockStatusMap.get(status)[1];
     }
+
+
+    public Block() {
+
+    }
+
 }

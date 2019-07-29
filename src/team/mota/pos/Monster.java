@@ -11,7 +11,7 @@ public class Monster extends Position {
     public Integer dct;
     public Integer money;
 
-    public Monster(String name,Integer hp, Integer atk, Integer dct, Integer money) {
+    public Monster(String name, Integer hp, Integer atk, Integer dct, Integer money) {
         this.name = name;
         this.hp = hp;
         this.atk = atk;
