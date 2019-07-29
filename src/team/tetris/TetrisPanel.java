@@ -247,6 +247,14 @@ public class TetrisPanel extends JPanel {
                 }
                 drawAll();
             }
+            // 检测死亡
+            for (int i = 0; i < 10; i++) {
+                if (status[0][i] == 1) {
+                    JOptionPane.showMessageDialog(null, "到顶层，游戏结束", "GAME OVER!", JOptionPane.ERROR_MESSAGE);
+                    timer.stop();
+                    return;
+                }
+            }
             turnh = 0;
             turnw = 4;
             block = intoPanel.getNext();
