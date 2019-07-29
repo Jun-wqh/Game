@@ -4,6 +4,8 @@ import team.mota.pos.Hero;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +28,7 @@ public class PropertyPanel extends JPanel {
     public PropertyPanel() {
         this.setLayout(new GridLayout(11, 11));
         property = new Property[11];
-        property[0] = new Property("层数", 0, 0, 100, 0);
+        property[0] = new Property("层数", 0, 0, MotaMap.H, 0);
         property[1] = new Property("生命", 1, 0, null, 0);
         property[2] = new Property("攻击", 2, 0, null, 0);
         property[3] = new Property("防御", 3, 0, null, 0);
@@ -63,9 +65,21 @@ public class PropertyPanel extends JPanel {
             this.add(labels[i][0]);
             this.add(labels[i][1]);
         }
+        ImageIcon icon1 = new ImageIcon("src\\team\\mota\\res\\"+MotaMap.k+".png");
+        icon1.setImage(icon1.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         labels[8][0] = new JLabel();
-        labels[8][0].setHorizontalAlignment(JLabel.RIGHT);
+        labels[8][0].setIcon(icon1);
         this.add(labels[8][0]);
+
+        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\" + MotaMap.p + ".png");
+        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        labels[8][1] = new JLabel();
+        labels[8][1].setIcon(icon2);
+        this.add(labels[8][1]);
+        listener();
+        labels[9][0] = new JLabel();
+        labels[9][0].setHorizontalAlignment(JLabel.RIGHT);
+        this.add(labels[9][0]);
     }
 
     public void setHero(Hero hero) {
@@ -76,8 +90,37 @@ public class PropertyPanel extends JPanel {
             }
         });
         if (hero.msg != null) {
-            labels[8][0].setText(hero.msg);
+            labels[9][0].setText(hero.msg);
             hero.msg = null;
         }
+    }
+
+    public void listener() {
+        labels[8][0].addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("4444");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 }

@@ -18,7 +18,9 @@ public class MonstrtMap {
         monsterMap.put(MotaMap.i, new Monster("初级法师", 60, 32, 8, 5));
         monsterMap.put(MotaMap.e, new Monster("骷髅人", 50, 42, 6, 6));
         monsterMap.put(MotaMap.f, new Monster("骷髅士兵", 55, 52, 12, 8));
+        monsterMap.put(MotaMap.r, new Monster("骷髅队长", 100, 65, 15, 30));
         monsterMap.put(MotaMap.j, new Monster("中级卫兵", 100, 100, 110, 50));
+        monsterMap.put(MotaMap.q, new Monster("初级卫兵", 50, 48, 22, 12));
     }
 
     public static Map<Integer, Article> articleMap = new HashMap<>();
@@ -33,7 +35,13 @@ public class MonstrtMap {
         articleMap.put(MotaMap.J, new Article("atk", 1));
         articleMap.put(MotaMap.K, new Article("dct", 1));
         articleMap.put(MotaMap.A, new Article("atk", 10));
+        articleMap.put(MotaMap.C, new Article("dct", 10));
     }
 
+    public static Map<String, team.mota.panel.Property> Property = new HashMap<>();
+
+    static{
+
+    }
 
 }

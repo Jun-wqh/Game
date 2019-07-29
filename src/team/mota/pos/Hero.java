@@ -1,8 +1,11 @@
 package team.mota.pos;
 
+import team.mota.event.Goods;
+import team.mota.event.SpEvent;
 import team.mota.panel.Message;
 import team.mota.panel.MotaMap;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +25,7 @@ public class Hero extends Position {
         article.put("level", 1);
         article.put("atk", 10);
         article.put("dct", 10);
-        article.put("money", 0);
+        article.put("money", 1000);
         article.put("hp", 600);
         article.put("redKey", 1);
         article.put("blueKey", 1);
@@ -48,9 +51,14 @@ public class Hero extends Position {
     public boolean buy(String name, Integer count, Integer money) {
         if (article.get("money") >= money) {
             article.put(name, article.get(name) + count);
+            article.put("money", article.get("money") - money);
             return true;
         }
         return false;
+    }
+
+    public boolean buy(Goods goods) {
+        return buy(goods.name, goods.value, goods.money);
     }
 
     public Boolean atk(Monster monster) {
@@ -107,8 +115,12 @@ public class Hero extends Position {
                 case MotaMap.J:
                 case MotaMap.K:
                 case MotaMap.A:
+                case MotaMap.C:
                     Article article = MonstrtMap.articleMap.get(even);
                     result = this.add(article.name, article.value);
+                    break;
+                case MotaMap.k:
+
                     break;
                 // 打怪
                 case MotaMap.a:
@@ -121,6 +133,8 @@ public class Hero extends Position {
                 case MotaMap.h:
                 case MotaMap.i:
                 case MotaMap.j:
+                case MotaMap.q:
+                case MotaMap.r:
                     Monster monster = MonstrtMap.monsterMap.get(even);
                     Boolean checkatk = this.checkatk(monster);
                     if (checkatk) {
@@ -151,6 +165,19 @@ public class Hero extends Position {
                     break;
                 case MotaMap.F:
                     result = this.use("redKey", 1);
+                    break;
+                //进商店
+                case MotaMap.M:
+                    Goods goods = SpEvent.buy4();
+                    if (goods != null) {
+                        boolean buy = buy(goods);
+                        if (buy) {
+                            SpEvent.money += SpEvent.space;
+                            SpEvent.space += 20;
+                        } else {
+                            msg = "钱不够！";
+                        }
+                    }
                     break;
                 //上楼
                 case MotaMap.T:
@@ -227,6 +254,26 @@ public class Hero extends Position {
 
     // private Integer exp;
     // private Integer level;
+
+    public void inStore() {
+        int money = 20;
+        String[] options = {"增加100点生命值", "增加2点攻击力", "增加4点防御力", "离开"};
+        int choice = JOptionPane.showOptionDialog(null, "花" + money + "金币你可以：",
+                "商店", JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        if (choice == 0) {
+            buy("hp", 100, money);
+        }
+        if (choice == 1) {
+            buy("atk", 2, money);
+        }
+        if (choice == 2) {
+            buy("dct", 4, money);
+        }
+        if (choice == 3) {
+
+        }
+    }
 
 }
 
