@@ -14,10 +14,10 @@ public class TetrisMain extends JPanel {
     public static void main(String[] args) {
         JFrame frame = new JFrame("俄罗斯方块bate");
         frame.setLayout(null);
-        frame.setBounds(0, 0, 426, 639);
+        frame.setBounds(0, 0, 456, 639);
         // 提示面板
         IntoPanel intoPanel = new IntoPanel();
-        intoPanel.setBounds(300, 0, 120, 600);
+        intoPanel.setBounds(300, 0, 150, 600);
         Border border = BorderFactory.createMatteBorder(0, 1, 0, 0, Color.LIGHT_GRAY);
         intoPanel.setBorder(border);
         frame.add(intoPanel);
