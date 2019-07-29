@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 public class MotaPanel extends JPanel {
 
     JLabel[][] labels;
-    Font f = new Font("宋体", Font.BOLD, 30);
+    Font font = new Font("宋体", Font.BOLD, 30);
     Hero hero;
 
     PropertyPanel propertyPanel;

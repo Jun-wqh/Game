@@ -127,57 +127,74 @@ public class TetrisPanel extends JPanel {
         } else {
             // 障碍物判断
             if ("d".equals(key)) {
-                boolean[] bottoms = new boolean[block.width];
+                boolean bottoms = false;
                 for (int w = 0; w < block.width; w++) {
                     for (int h = block.height - 1; h >= 0; h--) {
                         if (block.blocks[h][w] == 1) {
                             if (turnh + h < 20 && status[turnh + h][turnw + w] == 1) {
-                                bottoms[w] = true;
+                                bottoms = true;
                                 break;
                             }
                         }
                     }
-                    if (bottoms[w]) {
+                    if (bottoms) {
                         stop = true;
                         turnh--;
+                        break;
                     }
                 }
             }
             if ("l".equals(key)) {
-                boolean[] lefts = new boolean[block.height];
+                boolean lefts = false;
                 for (int h = 0; h < block.height; h++) {
                     for (int w = 0; w < block.width; w++) {
                         if (block.blocks[h][w] == 1) {
                             if (turnw + h >= 0 && status[turnh + h][turnw + w] == 1) {
-                                lefts[h] = true;
+                                lefts = true;
                                 break;
                             }
                         }
                     }
-                    if (lefts[h]) {
+                    if (lefts) {
                         turnw++;
+                        break;
                     }
                 }
             }
             if ("r".equals(key)) {
-                boolean[] rigths = new boolean[block.height];
+                boolean rigths = false;
                 for (int h = 0; h < block.height; h++) {
                     for (int w = block.width - 1; w >= 0; w--) {
                         if (block.blocks[h][w] == 1) {
                             if (turnw + h <= 10 && status[turnh + h][turnw + w] == 1) {
-                                rigths[h] = true;
+                                rigths = true;
                                 break;
                             }
                         }
                     }
-                    if (rigths[h]) {
+                    if (rigths) {
                         turnw--;
+                        break;
                     }
                 }
             }
             // 旋转判断
             if ("u".equals(key)) {
-                //todo 太难了，放着先
+                boolean turns = false;
+                for (int h = 0; h < block.height; h++) {
+                    for (int w = 0; w < block.width; w++) {
+                        if (block.blocks[h][w] == 1) {
+                            if (turnw + h >= 0 && turnw + h <= 10 && status[turnh + h][turnw + w] == 1) {
+                                turns = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (turns) {
+                        block.turni();
+                        break;
+                    }
+                }
             }
         }
 
@@ -238,6 +255,9 @@ public class TetrisPanel extends JPanel {
         }
     }
 
+    int space = 10;
+    int level = 1;
+
     public void drawAll() {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
@@ -248,6 +268,15 @@ public class TetrisPanel extends JPanel {
                 }
             }
         }
-        intoPanel.setScore(score);
+        if (score > space && level < 7) {
+            for (int i = 0; i < level; i++) {
+                space += 10;
+            }
+            level++;
+            // 调速度
+            timer.setDelay(1000 - 100 * level);
+        }
+        intoPanel.setScore(score, level);
+
     }
 }
