@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 public class MotaPanel extends JPanel {
 
     JLabel[][] labels;
-    Font f = new Font("宋体", Font.BOLD, 40);
+    Font f = new Font("宋体", Font.BOLD, 30);
     Hero hero;
 
     PropertyPanel propertyPanel;
@@ -32,7 +32,7 @@ public class MotaPanel extends JPanel {
             for (int j = 0; j < 11; j++) {
                 labels[i][j] = new JLabel();
                 ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + maps[i][j] + ".png");
-                icon.setImage(icon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+                icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                 labels[i][j].setIcon(icon);
                 this.add(labels[i][j]);
             }
@@ -70,10 +70,10 @@ public class MotaPanel extends JPanel {
                         int rx = hero.x;
                         int ry = hero.y;
                         ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\10.png");
-                        icon.setImage(icon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+                        icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                         labels[xx][yy].setIcon(icon);
                         icon = new ImageIcon("src\\team\\mota\\res\\100.png");
-                        icon.setImage(icon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+                        icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                         labels[rx][ry].setIcon(icon);
                         propertyPanel.setHero(hero);
                     } else {
@@ -83,7 +83,7 @@ public class MotaPanel extends JPanel {
                         for (int i = 0; i < 11; i++) {
                             for (int j = 0; j < 11; j++) {
                                 ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + maps[i][j] + ".png");
-                                icon.setImage(icon.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+                                icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                                 labels[i][j].setIcon(icon);
                             }
                         }
