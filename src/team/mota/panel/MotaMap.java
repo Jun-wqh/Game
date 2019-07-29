@@ -146,17 +146,17 @@ public class MotaMap {
         };
         motemap.put(6, map6);
         Integer[][] map7 = new Integer[][]{
-                {T, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, H},
-                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, S}
+                {T, Q, J, Q, L, m, L, Q, Y, Q, a},
+                {L, Q, U, Q, L, L, L, Q, Y, Q, b},
+                {L, Q, g, Q, b, Q, f, Q, U, Q, a},
+                {L, Q, L, Q, L, Q, L, Q, L, Q, L},
+                {D, Q, D, Q, B, Q, D, Q, e, Q, D},
+                {L, f, L, i, L, L, L, L, L, L, L},
+                {L, Q, L, Q, D, Q, D, Q, f, Q, D},
+                {L, Q, L, Q, L, Q, L, Q, L, Q, L},
+                {L, Q, L, Q, g, Q, b, Q, V, Q, L},
+                {a, Q, a, Q, Y, Q, i, Q, Y, Q, H},
+                {L, b, L, Q, Y, Q, V, Q, Y, Q, S}
         };
         motemap.put(7, map7);
         Integer[][] map8 = new Integer[][]{
