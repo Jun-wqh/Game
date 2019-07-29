@@ -131,6 +131,9 @@ public class Hero extends Position {
                         msg = "打不过";
                     }
                     break;
+                case MotaMap.n:
+
+                    break;
                 case MotaMap.Q:
                     break;
                 case MotaMap.L:

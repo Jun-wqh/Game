@@ -53,6 +53,7 @@ public class MotaMap {
 
     public final static int k = 21;// 飞行器
     public final static int o = 25;// 记事本
+    public final static int p = 26;// 记事本
 
     public final static int l = 22;// 小偷
     public final static int m = 23;// 奸商
