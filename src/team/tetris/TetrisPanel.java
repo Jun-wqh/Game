@@ -94,7 +94,7 @@ public class TetrisPanel extends JPanel {
                         if (turnw > 0) {
                             turnw--;
                         }
-                        draw(null);
+                        draw("l");
                         break;
                     default:
                         break;
@@ -276,13 +276,13 @@ public class TetrisPanel extends JPanel {
                 }
             }
         }
-        if (score > space && level < 7) {
+        if (score > space && level < 8) {
             for (int i = 0; i < level; i++) {
                 space += 10;
             }
             level++;
             // 调速度
-            timer.setDelay(1000 - 100 * level);
+            timer.setDelay(1000 - 120 * level);
         }
         intoPanel.setScore(score, level);
 

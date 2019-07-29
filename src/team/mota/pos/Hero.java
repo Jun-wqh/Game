@@ -1,5 +1,6 @@
 package team.mota.pos;
 
+import team.mota.panel.Message;
 import team.mota.panel.MotaMap;
 
 import java.util.HashMap;
@@ -132,6 +133,7 @@ public class Hero extends Position {
                     }
                     break;
                 case MotaMap.n:
+                    new Message();
 
                     break;
                 case MotaMap.Q:
@@ -210,12 +212,15 @@ public class Hero extends Position {
     public boolean up() {
         return move(-1, 0);
     }
+
     public boolean down() {
         return move(1, 0);
     }
+
     public boolean left() {
         return move(0, -1);
     }
+
     public boolean right() {
         return move(0, 1);
     }
