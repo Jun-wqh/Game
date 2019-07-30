@@ -6,7 +6,9 @@ import team.mota.panel.Message;
 import team.mota.panel.MotaMap;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +17,7 @@ import java.util.Map;
 public class Hero extends Position {
 
     public Map<String, Integer> article = new HashMap<>();
+    public Map<String, Integer> equipage = new HashMap<>();
     Integer[][] maps;
     public String msg = null;
 
@@ -22,6 +25,7 @@ public class Hero extends Position {
         this.x = x;
         this.y = y;
         maps = MotaMap.motemap.get(map);
+        List<String> equipageList = new ArrayList<>();
         article.put("level", 1);
         article.put("atk", 10);
         article.put("dct", 10);
@@ -30,6 +34,7 @@ public class Hero extends Position {
         article.put("redKey", 1);
         article.put("blueKey", 1);
         article.put("yellowKey", 1);
+//        equipage.put("飞行器"，)
     }
 
     public boolean add(String name, Integer count) {

@@ -26,22 +26,24 @@ public class MonstrtMap {
     public static Map<Integer, Article> articleMap = new HashMap<>();
 
     static {
-        articleMap.put(MotaMap.R, new Article("redKey", 1));
-        articleMap.put(MotaMap.B, new Article("blueKey", 1));
-        articleMap.put(MotaMap.Y, new Article("yellowKey", 1));
-        articleMap.put(MotaMap.U, new Article("hp", 100));
-        articleMap.put(MotaMap.V, new Article("hp", 200));
-        articleMap.put(MotaMap.W, new Article("hp", 400));
-        articleMap.put(MotaMap.J, new Article("atk", 1));
-        articleMap.put(MotaMap.K, new Article("dct", 1));
-        articleMap.put(MotaMap.A, new Article("atk", 10));
-        articleMap.put(MotaMap.C, new Article("dct", 10));
+        articleMap.put(MotaMap.R, new Article("redKey", 1,1));
+        articleMap.put(MotaMap.B, new Article("blueKey", 1,1));
+        articleMap.put(MotaMap.Y, new Article("yellowKey", 1,1));
+        articleMap.put(MotaMap.U, new Article("hp", 100,1));
+        articleMap.put(MotaMap.V, new Article("hp", 200,1));
+        articleMap.put(MotaMap.W, new Article("hp", 400,1));
+        articleMap.put(MotaMap.J, new Article("atk", 1,1));
+        articleMap.put(MotaMap.K, new Article("dct", 1,1));
+        articleMap.put(MotaMap.A, new Article("atk", 10,1));
+        articleMap.put(MotaMap.C, new Article("dct", 10,1));
     }
 
-    public static Map<String, team.mota.panel.Property> Property = new HashMap<>();
+    public static Map<Integer, Article> equipageMap = new HashMap<>();
 
     static{
-
+        equipageMap.put(MotaMap.k,new Article("飞行器",1,-1));// 飞行器
+        equipageMap.put(MotaMap.o,new Article("记事本",1,-1));// 记事本
+        equipageMap.put(MotaMap.p,new Article("怪物图鉴",1,-1));// 怪物图鉴
     }
 
 }
