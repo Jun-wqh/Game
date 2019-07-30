@@ -6,9 +6,7 @@ import team.mota.panel.Message;
 import team.mota.panel.MotaMap;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,31 +15,30 @@ import java.util.Map;
 public class Hero extends Position {
 
     public Map<String, Integer> article = new HashMap<>();
-    public Map<String, Integer> equipage = new HashMap<>();
     Integer[][] maps;
     public String msg = null;
+    public Boolean fly = false;// 飞行器
+    public Boolean book = false;// 图鉴
+    public Boolean note = false;// 记事本
 
     public Hero(Integer x, Integer y, Integer map) {
         this.x = x;
         this.y = y;
         maps = MotaMap.motemap.get(map);
-        List<String> equipageList = new ArrayList<>();
         article.put("level", 1);
-        article.put("atk", 10);
+        article.put("atk", 100);
         article.put("dct", 10);
         article.put("money", 1000);
         article.put("hp", 600);
         article.put("redKey", 1);
         article.put("blueKey", 1);
-        article.put("yellowKey", 1);
-//        equipage.put("飞行器"，)
+        article.put("yellowKey", 5);
     }
 
     public boolean add(String name, Integer count) {
         article.put(name, article.get(name) + count);
         return true;
     }
-
 
     public boolean use(String name, Integer count) {
         if (article.get(name) >= count) {
@@ -124,10 +121,16 @@ public class Hero extends Position {
                     Article article = MonstrtMap.articleMap.get(even);
                     result = this.add(article.name, article.value);
                     break;
-                case MotaMap.k:
-
-                    break;
                 // 打怪
+                case MotaMap.k:
+                    fly = true;
+                    result = true;
+                    break;
+                case MotaMap.p:
+                    // TODO 老头事件
+                    book = true;
+                    result = true;
+                    break;
                 case MotaMap.a:
                 case MotaMap.b:
                 case MotaMap.c:
@@ -153,7 +156,6 @@ public class Hero extends Position {
                     break;
                 case MotaMap.n:
                     new Message();
-
                     break;
                 case MotaMap.Q:
                     break;

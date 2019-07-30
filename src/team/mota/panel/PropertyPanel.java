@@ -4,10 +4,12 @@ import team.mota.pos.Hero;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Jun-wqh seeyul
@@ -15,6 +17,7 @@ import java.util.Map;
 public class PropertyPanel extends JPanel {
 
     JLabel[][] labels;
+    Set<Integer> levelSet = new HashSet<>();
 
     /**
      * Creates a new <code>JPanel</code> with a double buffer
@@ -65,24 +68,17 @@ public class PropertyPanel extends JPanel {
             this.add(labels[i][0]);
             this.add(labels[i][1]);
         }
-        ImageIcon icon1 = new ImageIcon("src\\team\\mota\\res\\"+MotaMap.k+".png");
-        icon1.setImage(icon1.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         labels[8][0] = new JLabel();
-        labels[8][0].setIcon(icon1);
         this.add(labels[8][0]);
-
-        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\" + MotaMap.p + ".png");
-        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         labels[8][1] = new JLabel();
-        labels[8][1].setIcon(icon2);
         this.add(labels[8][1]);
-        listener();
         labels[9][0] = new JLabel();
         labels[9][0].setHorizontalAlignment(JLabel.RIGHT);
         this.add(labels[9][0]);
     }
 
     public void setHero(Hero hero) {
+        levelSet.add(hero.article.get("level"));
         hero.article.forEach((k, v) -> {
             if (!propertyMap.get(k).value.equals(v)) {
                 propertyMap.get(k).value = v;
@@ -93,34 +89,39 @@ public class PropertyPanel extends JPanel {
             labels[9][0].setText(hero.msg);
             hero.msg = null;
         }
+        if (hero.fly) {
+            fly();
+            hero.fly = false;
+        }
+        if (hero.book) {
+            book();
+            hero.book = false;
+        }
     }
 
-    public void listener() {
-        labels[8][0].addMouseListener(new MouseListener() {
+    public void fly() {
+        ImageIcon icon1 = new ImageIcon("src\\team\\mota\\res\\21.png");
+        icon1.setImage(icon1.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        labels[8][0].setIcon(icon1);
+        labels[8][0].addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("4444");
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
+                System.out.println(levelSet);
 
             }
         });
     }
+
+    public void book() {
+        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\26.png");
+        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        labels[8][1].setIcon(icon2);
+        labels[8][1].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
+    }
+
 }

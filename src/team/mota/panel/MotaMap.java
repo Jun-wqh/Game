@@ -61,7 +61,7 @@ public class MotaMap {
 
     public final static int k = 21;// 飞行器
     public final static int o = 25;// 记事本
-    public final static int p = 26;// 怪物图鉴
+    public final static int p = 261;// 怪物图鉴
 
     public final static int l = 22;// 小偷
     public final static int m = 23;// 奸商
@@ -102,7 +102,7 @@ public class MotaMap {
                 {Y, K, Q, Y, V, Y, Q, L, Q, L, U},
                 {L, U, Q, V, Y, V, Q, L, D, g, L},
                 {i, L, Q, Y, B, Y, Q, L, Q, Q, Q},
-                {D, Q, Q, Q, L, Q, Q, L, Q, L, n},
+                {D, Q, Q, Q, L, Q, Q, L, Q, L, p},
                 {L, L, g, L, L, L, a, L, L, L, L},
                 {D, Q, Q, L, L, L, Q, L, Q, Q, Q},
                 {e, L, Q, Q, L, Q, Q, L, Q, L, U},
