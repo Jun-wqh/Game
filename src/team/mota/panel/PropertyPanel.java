@@ -18,7 +18,6 @@ public class PropertyPanel extends JPanel {
 
     JLabel[][] labels;
     Set<Integer> levelSet = new HashSet<>();
-
     /**
      * Creates a new <code>JPanel</code> with a double buffer
      * and a flow layout.
@@ -27,6 +26,11 @@ public class PropertyPanel extends JPanel {
 
     Map<String, Property> propertyMap = new HashMap<>();
     Font font = new Font("宋体", Font.BOLD, 25);
+    MotaPanel motaPanel;
+
+    public void setMotaPanel(MotaPanel motaPanel) {
+        this.motaPanel = motaPanel;
+    }
 
     public PropertyPanel() {
         this.setLayout(new GridLayout(11, 11));
@@ -72,9 +76,6 @@ public class PropertyPanel extends JPanel {
         this.add(labels[8][0]);
         labels[8][1] = new JLabel();
         this.add(labels[8][1]);
-        labels[9][0] = new JLabel();
-        labels[9][0].setHorizontalAlignment(JLabel.RIGHT);
-        this.add(labels[9][0]);
     }
 
     public void setHero(Hero hero) {
@@ -86,11 +87,11 @@ public class PropertyPanel extends JPanel {
             }
         });
         if (hero.msg != null) {
-            labels[9][0].setText(hero.msg);
+            new ShowMessageFrame(hero.msg);
             hero.msg = null;
         }
         if (hero.fly) {
-            fly();
+            fly(hero);
             hero.fly = false;
         }
         if (hero.book) {
@@ -99,15 +100,24 @@ public class PropertyPanel extends JPanel {
         }
     }
 
-    public void fly() {
+    public void fly(Hero hero) {
+        JFrame frame = new JFrame();
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screensize = tk.getScreenSize();
+        int height = screensize.height;
+        int width = screensize.width;
+        frame.setBounds(width / 2 - 180, height / 2 - 100, 400, 400);
+        frame.setLocationRelativeTo(null);
         ImageIcon icon1 = new ImageIcon("src\\team\\mota\\res\\21.png");
         icon1.setImage(icon1.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        FlyPanel flyPanel = new FlyPanel();
+        frame.add(flyPanel);
         labels[8][0].setIcon(icon1);
         labels[8][0].addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(levelSet);
-
+                flyPanel.sync(levelSet, hero, frame, motaPanel);
+                frame.setVisible(true);
             }
         });
     }
@@ -123,5 +133,4 @@ public class PropertyPanel extends JPanel {
             }
         });
     }
-
 }

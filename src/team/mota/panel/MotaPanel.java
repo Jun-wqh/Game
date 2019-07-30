@@ -22,6 +22,7 @@ public class MotaPanel extends JPanel {
 
     public MotaPanel(PropertyPanel propertyPanel) {
         this.propertyPanel = propertyPanel;
+        propertyPanel.setMotaPanel(this);
         hero = new Hero(10, 5, level);
         propertyPanel.setHero(hero);
         this.setLayout(new GridLayout(11, 11));

@@ -42,7 +42,7 @@ public class Hero extends FlyingObject {
 		int xStep = this.width/4;
 		int yStep = 20;
 		if(doublefire>0 && doublefire<100) {
-			Bullet bs[] = new Bullet[2];  
+			Bullet bs[] = new Bullet[2];
 			bs[0] = new Bullet(this.x+1*xStep, y-yStep,0);
 			bs[1] = new Bullet(this.x+3*xStep, y-yStep,0);
 			doublefire-=2;

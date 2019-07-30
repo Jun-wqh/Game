@@ -67,7 +67,7 @@ public class World extends JPanel {
             return new Airplane();
         } else if (type < 40) {
             return new BigAirplane();
-        } else if (type < 50) {
+        } else if (type < 48) {
             return new Award_All();
         } else {
             System.out.println("糟糕是导弹，快跑！");

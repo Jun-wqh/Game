@@ -68,6 +68,7 @@ public class Saolei extends JPanel {
                 jButton[i][j] = new JButton();
                 int finalI = i;
                 int finalJ = j;
+                jButton[i][j].setMargin(new java.awt.Insets(0, 0, 0, 0));
                 jButton[i][j].addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
