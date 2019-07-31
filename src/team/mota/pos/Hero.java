@@ -2,7 +2,7 @@ package team.mota.pos;
 
 import team.mota.event.Goods;
 import team.mota.event.SpEvent;
-import team.mota.panel.Message;
+import team.mota.panel.DialogueMap;
 import team.mota.panel.MotaMap;
 
 import javax.swing.*;
@@ -98,6 +98,20 @@ public class Hero extends Position {
         }
     }
 
+    public void dialogue(int npc) {
+        String NPC = npc + "" + article.get("level");
+        String dialogue = DialogueMap.dialogueMessageMap.get(NPC);
+        Object[] options = {"好的"};
+        int choice = JOptionPane.showOptionDialog(null, dialogue,
+                "对话", JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        if (choice == 0) {
+            if (NPC.equals(MotaMap.n + "3")){
+                book = true;
+            }
+        }
+    }
+
     public boolean move(int x, int y) {
         int rx = this.x + x;
         int ry = this.y + y;
@@ -121,16 +135,11 @@ public class Hero extends Position {
                     Article article = MonstrtMap.articleMap.get(even);
                     result = this.add(article.name, article.value);
                     break;
-                // 打怪
                 case MotaMap.k:
                     fly = true;
                     result = true;
                     break;
-                case MotaMap.p:
-                    // TODO 老头事件
-                    book = true;
-                    result = true;
-                    break;
+                // 打怪
                 case MotaMap.a:
                 case MotaMap.b:
                 case MotaMap.c:
@@ -154,8 +163,9 @@ public class Hero extends Position {
                         msg = "打不过";
                     }
                     break;
-                case MotaMap.n:
-                    new Message();
+                case MotaMap.n:    //老头对话
+                    dialogue(MotaMap.n);
+//                    result = true;
                     break;
                 case MotaMap.Q:
                     break;

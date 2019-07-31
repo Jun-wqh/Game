@@ -24,7 +24,7 @@ public class MotaMap {
     public final static int K = 8;//蓝结晶
     //墙
     public final static int Q = 50;
-    public final static int O = 49;
+    public final static int O = 49;//特殊墙
     //门
     public final static int D = 51;//黄门
     public final static int E = 52;//蓝门
@@ -61,12 +61,11 @@ public class MotaMap {
 
     public final static int k = 21;// 飞行器
     public final static int o = 25;// 记事本
-    public final static int p = 261;// 怪物图鉴
+//    public final static int p = 261;// 怪物图鉴
 
     public final static int l = 22;// 小偷
     public final static int m = 23;// 奸商
     public final static int n = 24;// 老头
-
 
     static {
         Integer[][] map1 = new Integer[][]{
@@ -102,7 +101,7 @@ public class MotaMap {
                 {Y, K, Q, Y, V, Y, Q, L, Q, L, U},
                 {L, U, Q, V, Y, V, Q, L, D, g, L},
                 {i, L, Q, Y, B, Y, Q, L, Q, Q, Q},
-                {D, Q, Q, Q, L, Q, Q, L, Q, L, p},
+                {D, Q, Q, Q, L, Q, Q, L, Q, L, n},
                 {L, L, g, L, L, L, a, L, L, L, L},
                 {D, Q, Q, L, L, L, Q, L, Q, Q, Q},
                 {e, L, Q, Q, L, Q, Q, L, Q, L, U},

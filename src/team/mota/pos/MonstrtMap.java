@@ -43,7 +43,7 @@ public class MonstrtMap {
     static{
         equipageMap.put(MotaMap.k,new Article("飞行器",1,-1));// 飞行器
         equipageMap.put(MotaMap.o,new Article("记事本",1,-1));// 记事本
-        equipageMap.put(MotaMap.p,new Article("怪物图鉴",1,-1));// 怪物图鉴
+//        equipageMap.put(MotaMap.p,new Article("怪物图鉴",1,-1));// 怪物图鉴
     }
 
 }
