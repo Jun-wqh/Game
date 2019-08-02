@@ -1,8 +1,8 @@
 package team.mota.pos;
 
+import team.mota.event.DialogueEvent;
 import team.mota.event.Goods;
 import team.mota.event.SpEvent;
-import team.mota.panel.DialogueMap;
 import team.mota.panel.MotaMap;
 
 import javax.swing.*;
@@ -20,6 +20,8 @@ public class Hero extends Position {
     public Boolean fly = false;// 飞行器
     public Boolean book = false;// 图鉴
     public Boolean note = false;// 记事本
+    public Boolean gold = false;// 金币
+    public Integer doubleGold = 1;
 
     public Hero(Integer x, Integer y, Integer map) {
         this.x = x;
@@ -36,6 +38,9 @@ public class Hero extends Position {
     }
 
     public boolean add(String name, Integer count) {
+        if (name.equals("money")) {
+            count = doubleGold * count;
+        }
         article.put(name, article.get(name) + count);
         return true;
     }
@@ -98,20 +103,6 @@ public class Hero extends Position {
         }
     }
 
-    public void dialogue(int npc) {
-        String NPC = npc + "" + article.get("level");
-        String dialogue = DialogueMap.dialogueMessageMap.get(NPC);
-        Object[] options = {"好的"};
-        int choice = JOptionPane.showOptionDialog(null, dialogue,
-                "对话", JOptionPane.YES_NO_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-        if (choice == 0) {
-            if (NPC.equals(MotaMap.n + "3")){
-                book = true;
-            }
-        }
-    }
-
     public boolean move(int x, int y) {
         int rx = this.x + x;
         int ry = this.y + y;
@@ -135,8 +126,14 @@ public class Hero extends Position {
                     Article article = MonstrtMap.articleMap.get(even);
                     result = this.add(article.name, article.value);
                     break;
+                //捡道具
                 case MotaMap.k:
                     fly = true;
+                    result = true;
+                    break;
+                case MotaMap.p:
+                    gold = true;
+                    doubleGold = 2;
                     result = true;
                     break;
                 // 打怪
@@ -163,8 +160,14 @@ public class Hero extends Position {
                         msg = "打不过";
                     }
                     break;
-                case MotaMap.n:    //老头对话
-                    dialogue(MotaMap.n);
+                //老头对话
+                case MotaMap.n:
+                    new DialogueEvent().dialogue(MotaMap.n, this);
+//                    result = true;
+                    break;
+                //奸商对话
+                case MotaMap.m:
+                    new DialogueEvent().dialogue(MotaMap.m, this);
 //                    result = true;
                     break;
                 case MotaMap.Q:

@@ -76,6 +76,8 @@ public class PropertyPanel extends JPanel {
         this.add(labels[8][0]);
         labels[8][1] = new JLabel();
         this.add(labels[8][1]);
+        labels[9][0] = new JLabel();
+        this.add(labels[9][0]);
     }
 
     public void setHero(Hero hero) {
@@ -97,6 +99,10 @@ public class PropertyPanel extends JPanel {
         if (hero.book) {
             book();
             hero.book = false;
+        }
+        if (hero.gold) {
+            gold();
+            hero.gold = false;
         }
     }
 
@@ -132,5 +138,11 @@ public class PropertyPanel extends JPanel {
                 super.mouseClicked(e);
             }
         });
+    }
+
+    public void gold() {
+        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\29.png");
+        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        labels[9][0].setIcon(icon2);
     }
 }

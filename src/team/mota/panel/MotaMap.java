@@ -61,13 +61,28 @@ public class MotaMap {
 
     public final static int k = 21;// 飞行器
     public final static int o = 25;// 记事本
-//    public final static int p = 261;// 怪物图鉴
+    public final static int p = 29;// 幸运金币
 
     public final static int l = 22;// 小偷
     public final static int m = 23;// 奸商
     public final static int n = 24;// 老头
 
     static {
+        Integer[][] map0 = new Integer[][]{
+                {T, H, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, p, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L},
+                {L, L, L, L, L, L, L, L, L, L, L}
+        };
+        motemap.put(0, map0);
+
         Integer[][] map1 = new Integer[][]{
                 {T, L, a, b, a, L, L, L, L, L, L},
                 {Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, L},
@@ -78,7 +93,7 @@ public class MotaMap {
                 {L, f, L, Q, L, Q, Q, Q, Q, Q, L},
                 {Q, D, Q, Q, L, L, L, L, L, L, L},
                 {L, L, L, Q, Q, D, Q, Q, Q, D, Q},
-                {U, L, Y, Q, Y, L, L, Q, L, g, L},
+                {U, L, Y, Q, Y, L, p, Q, L, g, L},
                 {U, k, Y, Q, L, H, L, Q, a, V, a}
         };
         motemap.put(1, map1);
