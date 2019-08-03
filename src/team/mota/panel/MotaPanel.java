@@ -18,7 +18,6 @@ public class MotaPanel extends JPanel {
 
     PropertyPanel propertyPanel;
     int level = 1;
-    Integer[][] maps;
 
     public MotaPanel(PropertyPanel propertyPanel) {
         this.propertyPanel = propertyPanel;
@@ -27,12 +26,12 @@ public class MotaPanel extends JPanel {
         propertyPanel.setHero(hero);
         this.setLayout(new GridLayout(11, 11));
         this.setBackground(Color.lightGray);
-        maps = MotaMap.motemap.get(level);
+        hero.maps = MotaMap.motemap.get(level);
         labels = new JLabel[11][11];
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
                 labels[i][j] = new JLabel();
-                ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + maps[i][j] + ".png");
+                ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[i][j] + ".png");
                 icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                 labels[i][j].setIcon(icon);
                 this.add(labels[i][j]);
@@ -80,10 +79,10 @@ public class MotaPanel extends JPanel {
                     } else {
                         level = hero.article.get("level");
                         //换楼层
-                        maps = MotaMap.motemap.get(level);
+                        hero.maps = MotaMap.motemap.get(level);
                         for (int i = 0; i < 11; i++) {
                             for (int j = 0; j < 11; j++) {
-                                ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + maps[i][j] + ".png");
+                                ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[i][j] + ".png");
                                 icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                                 labels[i][j].setIcon(icon);
                             }
