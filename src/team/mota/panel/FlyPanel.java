@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class FlyPanel extends JPanel {
     Font font = new Font("宋体", Font.BOLD, 15);
-
+    // 已有楼层不初始化
     Set<Integer> levelA = new HashSet<>();
     JButton[] jButtons;
 
@@ -41,6 +41,22 @@ public class FlyPanel extends JPanel {
                     public void actionPerformed(ActionEvent e) {
                         frame.setVisible(false);
                         // 楼层跳转
+                        hero.article.put("level", level);
+                        motaPanel.level = level;
+                        motaPanel.maps = MotaMap.motemap.get(level);
+                        hero.maps = motaPanel.maps;
+                        for (int x = 0; x < 11; x++) {
+                            for (int y = 0; y < 11; y++) {
+                                if (motaPanel.maps[x][y] == MotaMap.H) {
+                                    hero.x = x;
+                                    hero.y = y;
+                                }
+                                ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + motaPanel.maps[x][y] + ".png");
+                                icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+                                motaPanel.labels[x][y].setIcon(icon);
+                            }
+                        }
+                        motaPanel.propertyPanel.setHero(hero);
                     }
                 });
 

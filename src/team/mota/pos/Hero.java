@@ -15,7 +15,7 @@ import java.util.Map;
 public class Hero extends Position {
 
     public Map<String, Integer> article = new HashMap<>();
-    Integer[][] maps;
+    public Integer[][] maps;
     public String msg = null;
     public Boolean fly = false;// 飞行器
     public Boolean book = false;// 图鉴

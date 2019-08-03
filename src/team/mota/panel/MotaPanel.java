@@ -88,6 +88,7 @@ public class MotaPanel extends JPanel {
                                 labels[i][j].setIcon(icon);
                             }
                         }
+                        propertyPanel.setHero(hero);
                     }
                 } else {
                     propertyPanel.setHero(hero);
