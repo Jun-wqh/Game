@@ -93,7 +93,7 @@ public class MotaMap {
                 {L, f, L, Q, L, Q, Q, Q, Q, Q, L},
                 {Q, D, Q, Q, L, L, L, L, L, L, L},
                 {L, L, L, Q, Q, D, Q, Q, Q, D, Q},
-                {U, L, Y, Q, Y, L, p, Q, L, g, L},
+                {U, L, Y, Q, Y, L, L, Q, L, g, L},
                 {U, k, Y, Q, L, H, L, Q, a, V, a}
         };
         motemap.put(1, map1);
