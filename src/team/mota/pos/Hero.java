@@ -2,6 +2,7 @@ package team.mota.pos;
 
 import team.mota.event.DialogueEvent;
 import team.mota.event.Goods;
+import team.mota.event.GuarderEven;
 import team.mota.event.SpEvent;
 import team.mota.panel.MotaMap;
 
@@ -148,17 +149,26 @@ public class Hero extends Position {
                 case MotaMap.i:
                 case MotaMap.j:
                 case MotaMap.q:
-                case MotaMap.r:
                     Monster monster = MonstrtMap.monsterMap.get(even);
                     Boolean checkatk = this.checkatk(monster);
                     if (checkatk) {
                         result = this.atk(monster);
                         if (result) {
+                            if (even == MotaMap.q) {
+                                new GuarderEven().lowGuarder(this);
+                            }
+                            if (even == MotaMap.j) {
+                                new GuarderEven().middleGuarder(this);
+                            }
                             this.add("money", monster.money);
                         }
                     } else {
                         msg = "打不过";
                     }
+                    break;
+                //boss事件
+                case MotaMap.r:
+
                     break;
                 //老头对话
                 case MotaMap.n:
