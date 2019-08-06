@@ -21,6 +21,14 @@ public class MonstrtMap {
         monsterMap.put(MotaMap.r, new Monster("骷髅队长", 100, 65, 15, 30));
         monsterMap.put(MotaMap.j, new Monster("中级卫兵", 100, 100, 110, 50));
         monsterMap.put(MotaMap.q, new Monster("初级卫兵", 50, 48, 22, 12));
+        monsterMap.put(MotaMap.s, new Monster("高级法师", 100, 95, 30, 18));
+        monsterMap.put(MotaMap.t, new Monster("黑球", 130,60, 3, 8));
+        monsterMap.put(MotaMap.u, new Monster("兽人", 260, 85, 5, 22));
+        monsterMap.put(MotaMap.v, new Monster("石头人", 20, 100, 68, 28));
+        monsterMap.put(MotaMap.w, new Monster("吸血鬼", 444, 199, 66, 144));
+        monsterMap.put(MotaMap.x, new Monster("幽灵", 320, 140, 20, 30));
+        monsterMap.put(MotaMap.h, new Monster("大蝙蝠", 60, 100, 8, 12));
+        monsterMap.put(MotaMap.z, new Monster("兽人武士", 320, 120, 15, 30));
     }
 
     public static Map<Integer, Article> articleMap = new HashMap<>();
