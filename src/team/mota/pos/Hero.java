@@ -23,12 +23,25 @@ public class Hero extends Position {
     public Boolean note = false;// 记事本
     public Boolean gold = false;// 金币
     public Integer doubleGold = 1;
+    public boolean change = false;
 
-    public Hero(Integer x, Integer y, Integer map) {
-        this.x = x;
-        this.y = y;
+    public Hero(Integer map) {
         maps = MotaMap.motemap.get(map);
-        article.put("level", 1);
+        boolean flagt = false;
+        for (int i = 0; i < maps.length; i++) {
+            if (flagt) {
+                break;
+            }
+            for (int j = 0; j < maps[i].length; j++) {
+                if (maps[i][j] == MotaMap.H) {
+                    this.x = i;
+                    this.y = j;
+                    flagt = true;
+                    break;
+                }
+            }
+        }
+        article.put("level", map);
         article.put("atk", 100);
         article.put("dct", 10);
         article.put("money", 1000);
@@ -155,10 +168,10 @@ public class Hero extends Position {
                         result = this.atk(monster);
                         if (result) {
                             if (even == MotaMap.q) {
-                                new GuarderEven().lowGuarder(this);
+                                GuarderEven.lowGuarder(this);
                             }
                             if (even == MotaMap.j) {
-                                new GuarderEven().middleGuarder(this);
+                                GuarderEven.middleGuarder(this);
                             }
                             this.add("money", monster.money);
                         }

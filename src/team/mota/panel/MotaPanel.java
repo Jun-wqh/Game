@@ -17,12 +17,12 @@ public class MotaPanel extends JPanel {
     Hero hero;
 
     PropertyPanel propertyPanel;
-    int level = 1;
+    int level = 8;
 
     public MotaPanel(PropertyPanel propertyPanel) {
         this.propertyPanel = propertyPanel;
         propertyPanel.setMotaPanel(this);
-        hero = new Hero(10, 5, level);
+        hero = new Hero(level);
         propertyPanel.setHero(hero);
         this.setLayout(new GridLayout(11, 11));
         this.setBackground(Color.lightGray);
@@ -76,6 +76,16 @@ public class MotaPanel extends JPanel {
                         icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                         labels[rx][ry].setIcon(icon);
                         propertyPanel.setHero(hero);
+                        if (hero.change) {
+                            for (int i = 0; i < 11; i++) {
+                                for (int j = 0; j < 11; j++) {
+                                    ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[i][j] + ".png");
+                                    icon2.setImage(icon2.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+                                    labels[i][j].setIcon(icon2);
+                                }
+                            }
+                            hero.change = false;
+                        }
                     } else {
                         level = hero.article.get("level");
                         //换楼层
