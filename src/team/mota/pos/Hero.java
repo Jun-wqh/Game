@@ -1,9 +1,6 @@
 package team.mota.pos;
 
-import team.mota.event.DialogueEvent;
-import team.mota.event.Goods;
-import team.mota.event.GuarderEven;
-import team.mota.event.SpEvent;
+import team.mota.event.*;
 import team.mota.panel.MotaMap;
 
 import javax.swing.*;
@@ -24,6 +21,7 @@ public class Hero extends Position {
     public Boolean gold = false;// 金币
     public Integer doubleGold = 1;
     public boolean change = false;
+    public Integer bossEvent = 1;
 
     public Hero(Integer map) {
         maps = MotaMap.motemap.get(map);
@@ -43,7 +41,7 @@ public class Hero extends Position {
         }
         article.put("level", map);
         article.put("atk", 100);
-        article.put("dct", 10);
+        article.put("def", 10);
         article.put("money", 1000);
         article.put("hp", 600);
         article.put("redKey", 1);
@@ -84,18 +82,18 @@ public class Hero extends Position {
 
     public Boolean atk(Monster monster) {
         int hp = monster.hp;
-        if (article.get("atk") <= monster.dct) {
+        if (article.get("atk") <= monster.def) {
             return false;
         }
-        if (article.get("dct") > monster.atk) {
+        if (article.get("def") > monster.atk) {
             return true;
         }
         for (; ; ) {
-            hp -= article.get("atk") - monster.dct;
+            hp -= article.get("atk") - monster.def;
             if (hp <= 0) {
                 return true;
             }
-            article.put("hp", article.get("hp") + article.get("dct") - monster.atk);
+            article.put("hp", article.get("hp") + article.get("def") - monster.atk);
             if (article.get("hp") <= 0) {
                 return false;
             }
@@ -106,11 +104,11 @@ public class Hero extends Position {
         Integer ahp = article.get("hp");
         Integer bhp = monster.hp;
         for (; ; ) {
-            bhp -= article.get("atk") - monster.dct;
+            bhp -= article.get("atk") - monster.def;
             if (bhp <= 0) {
                 return true;
             }
-            ahp -= monster.atk - article.get("dct");
+            ahp -= monster.atk - article.get("def");
             if (ahp <= 0) {
                 return false;
             }
@@ -150,6 +148,11 @@ public class Hero extends Position {
                     doubleGold = 2;
                     result = true;
                     break;
+                //boss事件
+                case MotaMap.r:
+                    BossEvent.floor10(MotaMap.r, bossEvent, this);
+                    change=true;
+                    break;
                 // 打怪
                 case MotaMap.a:
                 case MotaMap.b:
@@ -179,18 +182,15 @@ public class Hero extends Position {
                         msg = "打不过";
                     }
                     break;
-                //boss事件
-                case MotaMap.r:
 
-                    break;
                 //老头对话
                 case MotaMap.n:
-                    new DialogueEvent().dialogue(MotaMap.n, this);
+                    DialogueEvent.npcDialogue(MotaMap.n, this);
 //                    result = true;
                     break;
                 //奸商对话
                 case MotaMap.m:
-                    new DialogueEvent().dialogue(MotaMap.m, this);
+                    DialogueEvent.npcDialogue(MotaMap.m, this);
 //                    result = true;
                     break;
                 case MotaMap.Q:
@@ -311,7 +311,7 @@ public class Hero extends Position {
             buy("atk", 2, money);
         }
         if (choice == 2) {
-            buy("dct", 4, money);
+            buy("def", 4, money);
         }
         if (choice == 3) {
 

@@ -3,7 +3,7 @@ package team.mota.panel;
 import javax.swing.*;
 import java.awt.*;
 
-public class ShowMessageFrame extends JFrame{
+public class ShowMessageFrame extends JFrame {
     private JLabel text;
     Toolkit tk = Toolkit.getDefaultToolkit();
     Dimension screensize = tk.getScreenSize();
@@ -13,12 +13,7 @@ public class ShowMessageFrame extends JFrame{
 
     public ShowMessageFrame(String str) {
         this.str = str;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                initGUI();
-            }
-        }).start();
+        new Thread(() -> initGUI()).start();
     }
 
     private void initGUI() {
@@ -33,7 +28,7 @@ public class ShowMessageFrame extends JFrame{
                 text.setBackground(new java.awt.Color(255, 251, 240));
             }
             pack();
-            setBounds(width / 2 - 180, height/2 - 150, 360, 100);
+            setBounds(width / 2 - 180, height / 2 - 150, 360, 100);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e1) {

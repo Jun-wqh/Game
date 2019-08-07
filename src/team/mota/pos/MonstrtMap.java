@@ -41,9 +41,9 @@ public class MonstrtMap {
         articleMap.put(MotaMap.V, new Article("hp", 200,1));
         articleMap.put(MotaMap.W, new Article("hp", 400,1));
         articleMap.put(MotaMap.J, new Article("atk", 1,1));
-        articleMap.put(MotaMap.K, new Article("dct", 1,1));
+        articleMap.put(MotaMap.K, new Article("def", 1,1));
         articleMap.put(MotaMap.A, new Article("atk", 10,1));
-        articleMap.put(MotaMap.C, new Article("dct", 10,1));
+        articleMap.put(MotaMap.C, new Article("def", 10,1));
     }
 
     public static Map<Integer, Article> equipageMap = new HashMap<>();

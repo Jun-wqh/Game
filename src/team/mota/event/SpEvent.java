@@ -18,9 +18,7 @@ public class SpEvent {
             return new Goods("atk", 2, money);
         }
         if (choice == 2) {
-            return new Goods("dct", 4, money);
-        }
-        if (choice == 3) {
+            return new Goods("def", 4, money);
         }
         return null;
     }

@@ -13,7 +13,7 @@ import javax.swing.*;
 public class DialogueEvent {
 
     //npc对话事件
-    public void dialogue(int npc, Hero hero) {
+    public static void npcDialogue(int npc, Hero hero) {
         Object[] options = new Object[]{};
         String dialogue = "";
         String NPC = npc + "" + hero.article.get("level");
@@ -54,5 +54,17 @@ public class DialogueEvent {
                 default:
             }
         }
+    }
+
+    public static Integer bossDialogue(Integer boss, Integer bossEvent) {
+        Object[] options = {"放马过来吧！"};
+        String dialogue = DialogueMap.dialogueMessageMap.get(boss + "10-" + bossEvent);
+        int choice = JOptionPane.showOptionDialog(null, dialogue,
+                "对话", JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        if (choice == 0) {
+            return bossEvent;
+        }
+        return 0;
     }
 }

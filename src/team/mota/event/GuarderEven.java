@@ -27,8 +27,8 @@ public class GuarderEven {
             if (map[1][5] != MotaMap.j || map[1][7] != MotaMap.j) {
                 for (int j = 0; j < 11; j++) {
                     for (int k = 0; k < 11; k++) {
-                        if (hero.maps[j][k] == MotaMap.G) {
-                            hero.maps[j][k] = MotaMap.L;
+                        if (map[j][k] == MotaMap.G) {
+                            map[j][k] = MotaMap.L;
                         }
                     }
                 }

@@ -46,7 +46,7 @@ public class PropertyPanel extends JPanel {
         propertyMap.put("level", property[0]);
         propertyMap.put("hp", property[1]);
         propertyMap.put("atk", property[2]);
-        propertyMap.put("dct", property[3]);
+        propertyMap.put("def", property[3]);
         propertyMap.put("money", property[4]);
         propertyMap.put("redKey", property[5]);
         propertyMap.put("blueKey", property[6]);
