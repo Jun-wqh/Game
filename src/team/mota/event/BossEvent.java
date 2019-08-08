@@ -9,8 +9,8 @@ import team.mota.pos.Hero;
  */
 public class BossEvent {
 
-    public static void floor10(int r, Integer bossEvent, Hero hero) {
-        int event = DialogueEvent.bossDialogue(MotaMap.n, bossEvent);
+    public static void floor10(int monster, Hero hero) {
+        int event = DialogueEvent.bossDialogue(monster, hero.bossEvent);
         if (event == 1) {
             Integer[][] map = hero.maps;
             for (int i = 0; i < 11; i++) {
@@ -27,10 +27,36 @@ public class BossEvent {
             }
             map[3][5] = MotaMap.f;
             map[5][5] = MotaMap.f;
-            map[1][5] = MotaMap.r;
+            map[0][5] = MotaMap.r;
             map[2][5] = MotaMap.Z;
             map[6][5] = MotaMap.Z;
+            hero.bossEvent = 2;
         }
+        if (event == 2) {
+            hero.bossEvent = 3;
+        }
+    }
+
+    public static void floor10Reward(Hero hero) {
+        DialogueEvent.bossDialogue(MotaMap.r, hero.bossEvent);
+        Integer[][] map = hero.maps;
+        map[2][0] = MotaMap.J;
+        map[2][1] = MotaMap.J;
+        map[2][2] = MotaMap.J;
+        map[2][8] = MotaMap.K;
+        map[2][9] = MotaMap.K;
+        map[2][10] = MotaMap.K;
+        map[3][0] = MotaMap.V;
+        map[3][1] = MotaMap.V;
+        map[3][2] = MotaMap.V;
+        map[3][8] = MotaMap.Y;
+        map[3][9] = MotaMap.Y;
+        map[3][10] = MotaMap.Y;
+        map[10][5] = MotaMap.T;
+        map[3][3] = MotaMap.L;
+        map[3][7] = MotaMap.L;
+        map[6][5] = MotaMap.L;
+        hero.bossEvent = 4;
     }
 
 }

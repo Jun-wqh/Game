@@ -20,6 +20,7 @@ public class DialogueMap {
         dialogueMessageMap.put(MotaMap.m + "7", "奸商：在商店里你最好选择提升防御，只有在攻击力低于敌人的防御力时才提升攻击力。");
         dialogueMessageMap.put(MotaMap.r + "10-1", "骷髅队长：哈哈哈，你是如此的幸运能安全到达这里，但现在好运离你而去，你中埋伏了，弟兄们给我上。");
         dialogueMessageMap.put(MotaMap.r + "10-2", "骷髅队长：你怎能杀出重围？我是绝不会让你通过的，来吧。我要与你决斗！。");
+        dialogueMessageMap.put(MotaMap.r + "10-3", "骷髅队长：不，这是不可能的，你怎会打败我！你别太得意，后面还有许多强大的对手和机关存在，你稍有疏忽就必死无疑。");
     }
 
     static {

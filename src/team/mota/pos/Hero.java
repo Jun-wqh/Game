@@ -150,8 +150,19 @@ public class Hero extends Position {
                     break;
                 //boss事件
                 case MotaMap.r:
-                    BossEvent.floor10(MotaMap.r, bossEvent, this);
-                    change=true;
+                    if (this.bossEvent < 3) {
+                        BossEvent.floor10(MotaMap.r, this);
+                    } else {
+                        Monster monster = MonstrtMap.monsterMap.get(even);
+                        Boolean checkatk = this.checkatk(monster);
+                        if (checkatk) {
+                            result = this.atk(monster);
+                            if (result) {
+                                this.add("money", monster.money);
+                            }
+                        }
+                    }
+                    change = true;
                     break;
                 // 打怪
                 case MotaMap.a:
@@ -175,6 +186,9 @@ public class Hero extends Position {
                             }
                             if (even == MotaMap.j) {
                                 GuarderEven.middleGuarder(this);
+                            }
+                            if (this.article.get("level") == 10) {
+                                GuarderEven.foolr10Guarder(this);
                             }
                             this.add("money", monster.money);
                         }
