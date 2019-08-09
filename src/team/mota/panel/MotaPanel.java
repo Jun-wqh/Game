@@ -1,6 +1,7 @@
 package team.mota.panel;
 
 import team.mota.event.BossEvent;
+import team.mota.event.DialogueEvent;
 import team.mota.pos.Hero;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class MotaPanel extends JPanel {
     Hero hero;
 
     PropertyPanel propertyPanel;
-    int level = 10;
+    int level = 1;
 
     public MotaPanel(PropertyPanel propertyPanel) {
         this.propertyPanel = propertyPanel;
@@ -66,6 +67,21 @@ public class MotaPanel extends JPanel {
                     default:
                         break;
                 }
+                if (hero.change) {
+                    for (int i = 0; i < 11; i++) {
+                        for (int j = 0; j < 11; j++) {
+                            ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[i][j] + ".png");
+                            icon2.setImage(icon2.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+                            labels[i][j].setIcon(icon2);
+                        }
+                    }
+                    if (hero.bossEvent == 0) {
+                        DialogueEvent.bossDialogue(MotaMap.c, hero);
+                        hero.bossEvent = 1;
+                        result=true;
+                    }
+                    hero.change = false;
+                }
                 if (result) {
                     if (hero.article.get("level") == level) {
                         int rx = hero.x;
@@ -77,7 +93,7 @@ public class MotaPanel extends JPanel {
                         icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                         labels[rx][ry].setIcon(icon);
                         propertyPanel.setHero(hero);
-                        if(hero.bossEvent==3){
+                        if (hero.bossEvent == 3) {
                             BossEvent.floor10Reward(hero);
                         }
                     } else {
@@ -96,18 +112,7 @@ public class MotaPanel extends JPanel {
                 } else {
                     propertyPanel.setHero(hero);
                 }
-                if (hero.change) {
-                    for (int i = 0; i < 11; i++) {
-                        for (int j = 0; j < 11; j++) {
-                            ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[i][j] + ".png");
-                            icon2.setImage(icon2.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
-                            labels[i][j].setIcon(icon2);
-                        }
-                    }
-                    hero.change = false;
-                }
             }
-
             @Override
             public void keyReleased(KeyEvent e) {
 

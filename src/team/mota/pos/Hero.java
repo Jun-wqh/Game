@@ -21,7 +21,7 @@ public class Hero extends Position {
     public Boolean gold = false;// 金币
     public Integer doubleGold = 1;
     public boolean change = false;
-    public Integer bossEvent = 1;
+    public Integer bossEvent = -1;
 
     public Hero(Integer map) {
         maps = MotaMap.motemap.get(map);
@@ -41,12 +41,12 @@ public class Hero extends Position {
         }
         article.put("level", map);
         article.put("atk", 100);
-        article.put("def", 10);
-        article.put("money", 1000);
-        article.put("hp", 600);
-        article.put("redKey", 1);
-        article.put("blueKey", 1);
-        article.put("yellowKey", 5);
+        article.put("def", 100);
+        article.put("money", 0);
+        article.put("hp", 1000);
+        article.put("redKey", 0);
+        article.put("blueKey", 0);
+        article.put("yellowKey", 0);
     }
 
     public boolean add(String name, Integer count) {
@@ -176,6 +176,14 @@ public class Hero extends Position {
                 case MotaMap.i:
                 case MotaMap.j:
                 case MotaMap.q:
+                case MotaMap.s:
+                case MotaMap.t:
+                case MotaMap.u:
+                case MotaMap.v:
+                case MotaMap.w:
+                case MotaMap.x:
+                case MotaMap.y:
+                case MotaMap.z:
                     Monster monster = MonstrtMap.monsterMap.get(even);
                     Boolean checkatk = this.checkatk(monster);
                     if (checkatk) {
@@ -191,37 +199,61 @@ public class Hero extends Position {
                                 GuarderEven.foolr10Guarder(this);
                             }
                             this.add("money", monster.money);
+                            this.maps[rx][ry] = MotaMap.L;
+                            result = false;
+                            change = true;
                         }
                     } else {
                         msg = "打不过";
                     }
                     break;
-
                 //老头对话
                 case MotaMap.n:
                     DialogueEvent.npcDialogue(MotaMap.n, this);
-//                    result = true;
+                    this.maps[rx][ry] = MotaMap.L;
+                    change = true;
                     break;
                 //奸商对话
                 case MotaMap.m:
                     DialogueEvent.npcDialogue(MotaMap.m, this);
-//                    result = true;
+                    if (change) {
+                        this.maps[rx][ry] = MotaMap.L;
+                    }
+                    break;
+                case MotaMap.l:
+                    if (this.article.get("level") == 2) {
+                        DialogueEvent.thiefDialogue(this);
+                        change = true;
+                    }
                     break;
                 case MotaMap.Q:
                     break;
+                //路
                 case MotaMap.L:
-                case MotaMap.O:
                     result = true;
+                    break;
+                case MotaMap.O:
+                    maps[rx][ry] = MotaMap.L;
+                    change = true;
+                    break;
+                case MotaMap.X:
+                    if (this.article.get("level") == 3) {
+                        bossEvent = 0;
+                        change = BossEvent.floor3(this);
+                    }
                     break;
                 //开门
                 case MotaMap.D:
-                    result = this.use("yellowKey", 1);
+                    change = this.use("yellowKey", 1);
+                    maps[rx][ry] = MotaMap.L;
                     break;
                 case MotaMap.E:
-                    result = this.use("blueKey", 1);
+                    change = this.use("blueKey", 1);
+                    maps[rx][ry] = MotaMap.L;
                     break;
                 case MotaMap.F:
-                    result = this.use("redKey", 1);
+                    change = this.use("redKey", 1);
+                    maps[rx][ry] = MotaMap.L;
                     break;
                 //进商店
                 case MotaMap.M:
@@ -285,6 +317,9 @@ public class Hero extends Position {
             }
             if (result && !level) {
                 maps[this.x][this.y] = MotaMap.L;
+                if (even == MotaMap.X) {
+                    maps[this.x][this.y] = MotaMap.d;
+                }
                 maps[rx][ry] = 100;
                 this.x = rx;
                 this.y = ry;

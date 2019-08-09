@@ -29,6 +29,7 @@ public class DialogueEvent {
                 flag = false;
                 options = new Object[]{"好的"};
                 dialogue = DialogueMap.dialogueMessageMap.get(NPC);
+                hero.change = true;
             }
         }
         int choice = JOptionPane.showOptionDialog(null, dialogue,
@@ -56,15 +57,54 @@ public class DialogueEvent {
         }
     }
 
-    public static Integer bossDialogue(Integer boss, Integer bossEvent) {
-        Object[] options = {"放马过来吧！"};
-        String dialogue = DialogueMap.dialogueMessageMap.get(boss + "10-" + bossEvent);
+    public static Integer bossDialogue(Integer boss, Hero hero) {
+        Object[] options = {"结束"};
+        String dialogue = DialogueMap.dialogueMessageMap.get(boss + "" + hero.article.get("level"));
+        if (boss == MotaMap.r) {
+            dialogue = DialogueMap.dialogueMessageMap.get(boss + "" + hero.article.get("level") + "-" + hero.bossEvent);
+        }
         int choice = JOptionPane.showOptionDialog(null, dialogue,
                 "对话", JOptionPane.YES_NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         if (choice == 0) {
-            return bossEvent;
+            Integer[][] map = hero.maps;
+            map[6][4] = MotaMap.L;
+            map[7][4] = MotaMap.L;
+            map[9][4] = MotaMap.L;
+            map[8][3] = MotaMap.L;
+            map[8][4] = MotaMap.L;
+            map[8][5] = MotaMap.L;
+            map[10][1] = MotaMap.H;
+            Integer[][] map2 = MotaMap.motemap.get(2);
+            map2[7][3] = MotaMap.H;
+            map2[9][0] = MotaMap.L;
+            hero.x = 7;
+            hero.y = 3;
+            hero.article.put("hp", 400);
+            hero.article.put("atk", 10);
+            hero.article.put("def", 10);
+            hero.article.put("level", 2);
+            return hero.bossEvent;
         }
         return 0;
+    }
+
+    public static void thiefDialogue(Hero hero) {
+        Object[] options = {"继续"};
+        Object[] option1 = {"结束"};
+        String dialogue = DialogueMap.dialogueMessageMap.get(MotaMap.l + "" + hero.article.get("level") + "-1");
+        String dialogue2 = DialogueMap.dialogueMessageMap.get(MotaMap.l + "" + hero.article.get("level") + "-2");
+        int choice = JOptionPane.showOptionDialog(null, dialogue,
+                "对话", JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        if (choice == 0) {
+            int choice2 = JOptionPane.showOptionDialog(null, dialogue2, "对话", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.PLAIN_MESSAGE, null, option1, option1[0]);
+            if (choice2 == 0) {
+                Integer[][] map = hero.maps;
+                map[6][1] = MotaMap.L;
+                map[6][2] = MotaMap.L;
+            }
+        }
     }
 }

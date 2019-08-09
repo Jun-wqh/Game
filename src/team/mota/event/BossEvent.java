@@ -10,7 +10,7 @@ import team.mota.pos.Hero;
 public class BossEvent {
 
     public static void floor10(int monster, Hero hero) {
-        int event = DialogueEvent.bossDialogue(monster, hero.bossEvent);
+        int event = DialogueEvent.bossDialogue(monster, hero);
         if (event == 1) {
             Integer[][] map = hero.maps;
             for (int i = 0; i < 11; i++) {
@@ -38,7 +38,7 @@ public class BossEvent {
     }
 
     public static void floor10Reward(Hero hero) {
-        DialogueEvent.bossDialogue(MotaMap.r, hero.bossEvent);
+        DialogueEvent.bossDialogue(MotaMap.r, hero);
         Integer[][] map = hero.maps;
         map[2][0] = MotaMap.J;
         map[2][1] = MotaMap.J;
@@ -59,4 +59,13 @@ public class BossEvent {
         hero.bossEvent = 4;
     }
 
+    public static boolean floor3(Hero hero) {
+        Integer[][] map = hero.maps;
+        map[6][4] = MotaMap.c;
+        map[7][4] = MotaMap.d;
+        map[9][4] = MotaMap.d;
+        map[8][3] = MotaMap.d;
+        map[8][5] = MotaMap.d;
+        return true;
+    }
 }

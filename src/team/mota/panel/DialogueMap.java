@@ -21,6 +21,9 @@ public class DialogueMap {
         dialogueMessageMap.put(MotaMap.r + "10-1", "骷髅队长：哈哈哈，你是如此的幸运能安全到达这里，但现在好运离你而去，你中埋伏了，弟兄们给我上。");
         dialogueMessageMap.put(MotaMap.r + "10-2", "骷髅队长：你怎能杀出重围？我是绝不会让你通过的，来吧。我要与你决斗！。");
         dialogueMessageMap.put(MotaMap.r + "10-3", "骷髅队长：不，这是不可能的，你怎会打败我！你别太得意，后面还有许多强大的对手和机关存在，你稍有疏忽就必死无疑。");
+        dialogueMessageMap.put(MotaMap.c + "3", "魔王：欢迎来到魔塔，你是第一百位挑战者。你若能打败我所有的手下，我就与你一对一的决斗，现在你必须接受我的安排。");
+        dialogueMessageMap.put(MotaMap.l + "2-1", "小偷：你醒了吗？你到监狱时还处于昏迷，魔法警卫把你扔到我这个房间，但你很幸运，我刚完成逃跑的暗道，我们一起越狱吧。");
+        dialogueMessageMap.put(MotaMap.l + "2-2", "小偷：你的剑和盾被警卫拿走了，你必须先找到武器，我知道铁剑在5楼，铁盾在9楼，你最好先取到它们。我现在有事要做没法帮你，再见。");
     }
 
     static {

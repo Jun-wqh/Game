@@ -10,6 +10,7 @@ public class MotaMap {
     public static Map<Integer, Integer[][]> motemap = new HashMap<>();
     //路
     public final static int L = 10;
+    public final static int X = 0;
     public final static int H = 100;
     public final static int P = 66;
     // 钥匙
@@ -46,8 +47,8 @@ public class MotaMap {
     //怪物
     public final static int a = 11;// 绿球
     public final static int b = 12;// 红球
-    public final static int c = 13;
-    public final static int d = 14;
+    public final static int c = 13;// 魔王
+    public final static int d = 14;// 魔法警卫
     public final static int e = 15;// 骷髅人
     public final static int f = 16;// 骷髅士兵
     public final static int r = 28;// 骷髅队长
@@ -127,7 +128,7 @@ public class MotaMap {
                 {L, L, g, L, L, L, a, L, L, L, L},
                 {D, Q, Q, L, L, L, Q, L, Q, Q, Q},
                 {e, L, Q, Q, L, Q, Q, L, Q, L, U},
-                {L, Y, Q, L, L, L, Q, L, D, i, Y},
+                {L, Y, Q, L, X, L, Q, L, D, i, Y},
                 {U, J, Q, L, L, L, Q, L, Q, Q, Q},
                 {Q, Q, Q, Q, L, Q, Q, b, Q, L, L},
                 {S, H, L, L, L, L, Q, L, D, L, T}
@@ -275,7 +276,7 @@ public class MotaMap {
         motemap.put(13, map13);
         Integer[][] map14 = new Integer[][]{
                 {z, L, z, Q, K, Y, U, Q, Y, Y, Y},
-                {L, z, L, Q, t, Q, z, Q, D, D, Y},
+                {L, z, L, Q, t, Q, z, Q, L, L, Y},
                 {Q, L, L, Q, L, Q, L, Q, Q, D, Q},
                 {Q, E, Q, Q, E, Q, D, Q, L, z, L},
                 {U, L, L, h, L, v, L, h, L, L, L},
