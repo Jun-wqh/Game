@@ -18,7 +18,7 @@ public class DialogueEvent {
         String dialogue = "";
         String NPC = npc + "" + hero.article.get("level");
         boolean flag = true;
-        if (npc == MotaMap.n) {
+        if (npc == MotaMap.n || npc == MotaMap.l) {
             options = new Object[]{"好的"};
             dialogue = DialogueMap.dialogueMessageMap.get(NPC);
         }
@@ -67,23 +67,25 @@ public class DialogueEvent {
                 "对话", JOptionPane.YES_NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         if (choice == 0) {
-            Integer[][] map = hero.maps;
-            map[6][4] = MotaMap.L;
-            map[7][4] = MotaMap.L;
-            map[9][4] = MotaMap.L;
-            map[8][3] = MotaMap.L;
-            map[8][4] = MotaMap.L;
-            map[8][5] = MotaMap.L;
-            map[10][1] = MotaMap.H;
-            Integer[][] map2 = MotaMap.motemap.get(2);
-            map2[7][3] = MotaMap.H;
-            map2[9][0] = MotaMap.L;
-            hero.x = 7;
-            hero.y = 3;
-            hero.article.put("hp", 400);
-            hero.article.put("atk", 10);
-            hero.article.put("def", 10);
-            hero.article.put("level", 2);
+            if (boss == MotaMap.c) {
+                Integer[][] map = hero.maps;
+                map[6][4] = MotaMap.L;
+                map[7][4] = MotaMap.L;
+                map[9][4] = MotaMap.L;
+                map[8][3] = MotaMap.L;
+                map[8][4] = MotaMap.L;
+                map[8][5] = MotaMap.L;
+                map[10][1] = MotaMap.H;
+                Integer[][] map2 = MotaMap.motemap.get(2);
+                map2[7][3] = MotaMap.H;
+                map2[9][0] = MotaMap.L;
+                hero.x = 7;
+                hero.y = 3;
+                hero.article.put("hp", 400);
+                hero.article.put("atk", 10);
+                hero.article.put("def", 10);
+                hero.article.put("level", 2);
+            }
             return hero.bossEvent;
         }
         return 0;
@@ -98,12 +100,13 @@ public class DialogueEvent {
                 "对话", JOptionPane.YES_NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         if (choice == 0) {
-            int choice2 = JOptionPane.showOptionDialog(null, dialogue2, "对话", JOptionPane.YES_NO_OPTION,
-                    JOptionPane.PLAIN_MESSAGE, null, option1, option1[0]);
-            if (choice2 == 0) {
-                Integer[][] map = hero.maps;
-                map[6][1] = MotaMap.L;
-                map[6][2] = MotaMap.L;
+            if (hero.article.get("level") == 2) {
+                int choice2 = JOptionPane.showOptionDialog(null, dialogue2, "对话", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.PLAIN_MESSAGE, null, option1, option1[0]);
+                if (choice2 == 0) {
+                    Integer[][] map = hero.maps;
+                    map[6][1] = MotaMap.L;
+                }
             }
         }
     }

@@ -19,7 +19,7 @@ public class MotaPanel extends JPanel {
     Hero hero;
 
     PropertyPanel propertyPanel;
-    int level = 1;
+    int level = 10;
 
     public MotaPanel(PropertyPanel propertyPanel) {
         this.propertyPanel = propertyPanel;
@@ -78,7 +78,7 @@ public class MotaPanel extends JPanel {
                     if (hero.bossEvent == 0) {
                         DialogueEvent.bossDialogue(MotaMap.c, hero);
                         hero.bossEvent = 1;
-                        result=true;
+                        result = true;
                     }
                     hero.change = false;
                 }
@@ -95,6 +95,7 @@ public class MotaPanel extends JPanel {
                         propertyPanel.setHero(hero);
                         if (hero.bossEvent == 3) {
                             BossEvent.floor10Reward(hero);
+                            hero.change = true;
                         }
                     } else {
                         level = hero.article.get("level");
@@ -112,7 +113,18 @@ public class MotaPanel extends JPanel {
                 } else {
                     propertyPanel.setHero(hero);
                 }
+                if (hero.change) {
+                    for (int i = 0; i < 11; i++) {
+                        for (int j = 0; j < 11; j++) {
+                            ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[i][j] + ".png");
+                            icon2.setImage(icon2.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+                            labels[i][j].setIcon(icon2);
+                        }
+                    }
+                    hero.change = false;
+                }
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
 

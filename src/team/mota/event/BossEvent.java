@@ -56,6 +56,7 @@ public class BossEvent {
         map[3][3] = MotaMap.L;
         map[3][7] = MotaMap.L;
         map[6][5] = MotaMap.L;
+        map[9][5] = MotaMap.X;
         hero.bossEvent = 4;
     }
 
