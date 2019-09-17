@@ -19,7 +19,7 @@ public class MotaPanel extends JPanel {
     Hero hero;
 
     PropertyPanel propertyPanel;
-    int level = 10;
+    int level = 1;
 
     public MotaPanel(PropertyPanel propertyPanel) {
         this.propertyPanel = propertyPanel;

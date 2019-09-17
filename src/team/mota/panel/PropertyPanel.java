@@ -97,7 +97,7 @@ public class PropertyPanel extends JPanel {
             hero.fly = false;
         }
         if (hero.book) {
-            book();
+            book(hero);
             hero.book = false;
         }
         if (hero.gold) {
@@ -108,6 +108,8 @@ public class PropertyPanel extends JPanel {
 
     public void fly(Hero hero) {
         JFrame frame = new JFrame();
+        FlyPanel flyPanel = new FlyPanel();
+        frame.add(flyPanel);
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screensize = tk.getScreenSize();
         int height = screensize.height;
@@ -116,8 +118,6 @@ public class PropertyPanel extends JPanel {
         frame.setLocationRelativeTo(null);
         ImageIcon icon1 = new ImageIcon("src\\team\\mota\\res\\21.png");
         icon1.setImage(icon1.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
-        FlyPanel flyPanel = new FlyPanel();
-        frame.add(flyPanel);
         labels[8][0].setIcon(icon1);
         labels[8][0].addMouseListener(new MouseAdapter() {
             @Override
@@ -128,14 +128,15 @@ public class PropertyPanel extends JPanel {
         });
     }
 
-    public void book() {
+    public void book(Hero hero) {
         ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\26.png");
         icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         labels[8][1].setIcon(icon2);
+        BookPanel bookPanel = new BookPanel();
         labels[8][1].addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+//                super.mouseClicked(e);
             }
         });
     }

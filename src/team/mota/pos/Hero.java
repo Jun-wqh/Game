@@ -3,7 +3,6 @@ package team.mota.pos;
 import team.mota.event.*;
 import team.mota.panel.MotaMap;
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -347,26 +346,6 @@ public class Hero extends Position {
 
     // private Integer exp;
     // private Integer level;
-
-    public void inStore() {
-        int money = 20;
-        String[] options = {"增加100点生命值", "增加2点攻击力", "增加4点防御力", "离开"};
-        int choice = JOptionPane.showOptionDialog(null, "花" + money + "金币你可以：",
-                "商店", JOptionPane.YES_NO_OPTION,
-                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-        if (choice == 0) {
-            buy("hp", 100, money);
-        }
-        if (choice == 1) {
-            buy("atk", 2, money);
-        }
-        if (choice == 2) {
-            buy("def", 4, money);
-        }
-        if (choice == 3) {
-
-        }
-    }
 
 }
 
