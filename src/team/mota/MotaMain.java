@@ -31,7 +31,7 @@ public class MotaMain {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         // 焦点
-        ml.requestFocus();
+        ml.setFocusable(true);
     }
 
 }

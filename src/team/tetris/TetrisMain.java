@@ -30,7 +30,7 @@ public class TetrisMain extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         // 焦点
-        tl.requestFocus();
+        tl.setFocusable(true);
     }
 
 
