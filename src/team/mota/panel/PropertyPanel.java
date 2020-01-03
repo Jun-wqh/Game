@@ -19,8 +19,8 @@ public class PropertyPanel extends JPanel {
     JLabel[][] labels;
     Set<Integer> levelSet = new HashSet<>();
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
-     * and a flow layout.
+     * Creates mA new <code>JPanel</code> with mA double buffer
+     * and mA flow layout.
      */
     Property[] property;
 
@@ -35,14 +35,14 @@ public class PropertyPanel extends JPanel {
     public PropertyPanel() {
         this.setLayout(new GridLayout(11, 11));
         property = new Property[11];
-        property[0] = new Property("层数", 0, 0, MotaMap.H, 0);
+        property[0] = new Property("层数", 0, 0, MotaMap.hr, 0);
         property[1] = new Property("生命", 1, 0, null, 0);
         property[2] = new Property("攻击", 2, 0, null, 0);
         property[3] = new Property("防御", 3, 0, null, 0);
         property[4] = new Property("金币", 4, 0, null, 0);
-        property[5] = new Property("红钥匙", 5, 0, MotaMap.R, 0);
-        property[6] = new Property("蓝钥匙", 6, 0, MotaMap.B, 0);
-        property[7] = new Property("黄钥匙", 7, 0, MotaMap.Y, 0);
+        property[5] = new Property("红钥匙", 5, 0, MotaMap.pA, 0);
+        property[6] = new Property("蓝钥匙", 6, 0, MotaMap.pB, 0);
+        property[7] = new Property("黄钥匙", 7, 0, MotaMap.pC, 0);
         propertyMap.put("level", property[0]);
         propertyMap.put("hp", property[1]);
         propertyMap.put("atk", property[2]);
@@ -136,7 +136,7 @@ public class PropertyPanel extends JPanel {
         labels[8][1].addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                super.mouseClicked(e);
+//                super.mouseClicked(mE);
             }
         });
     }
