@@ -38,14 +38,22 @@ public class Hero extends Position {
                 }
             }
         }
-        article.put("level", map);
+        /*article.put("level", map);
         article.put("atk", 100);
         article.put("def", 100);
         article.put("money", 0);
         article.put("hp", 1000);
         article.put("redKey", 10);
         article.put("blueKey", 0);
-        article.put("yellowKey", 10);
+        article.put("yellowKey", 10);*/
+        article.put("level", map);
+        article.put("atk", 100);
+        article.put("def", 100);
+        article.put("money", 0);
+        article.put("hp", 1000);
+        article.put("redKey", 0);
+        article.put("blueKey", 0);
+        article.put("yellowKey", 1);
     }
 
     public boolean add(String name, Integer count) {
@@ -278,15 +286,14 @@ public class Hero extends Position {
                     maps = MotaMap.motemap.get(this.article.get("level"));
 //                    FloorEvent.up(maps,this.x,this.y );
                     boolean flagt = false;
-
                     for (int i = 0; i < maps.length; i++) {
                         if (flagt) {
                             break;
                         }
                         for (int j = 0; j < maps[i].length; j++) {
                             if (maps[i][j] == MotaMap.hr) {
-                                x = i;
-                                y = j;
+                                this.x = i;
+                                this.y = j;
                                 flagt = true;
                                 break;
                             }
