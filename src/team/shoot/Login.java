@@ -92,7 +92,7 @@ public class Login extends JFrame {
 		String name = txtName.getText();
 		String pwd = String.valueOf(pwdPwd.getPassword());
 		//读取账号密码
-		RandomAccessFile raf = new RandomAccessFile("user.txt","r");
+		RandomAccessFile raf = new RandomAccessFile("user.txt","mR");
 		
 		String username = null;
 		String userpwd = null;

@@ -9,331 +9,342 @@ import java.util.Map;
 public class MotaMap {
     public static Map<Integer, Integer[][]> motemap = new HashMap<>();
     //路
-    public final static int L = 10;
-    public final static int X = 0;
-    public final static int H = 100;
-    public final static int P = 66;
-    // 钥匙
-    public final static int R = 1;//红钥匙
-    public final static int B = 2;//蓝钥匙
-    public final static int Y = 3;//黄钥匙
-    // 血
-    public final static int U = 4;//红药水
-    public final static int V = 5;//蓝药水
-    public final static int W = 6;//绿药水
-    //结晶
-    public final static int J = 7;//红结晶
-    public final static int K = 8;//蓝结晶
+    public final static int rA = 10;
+    public final static int rB = 0;
+    public final static int rC = 66;
+    public final static int hr = 100;
+    /**
+     * 结构
+     */
     //墙
-    public final static int Q = 50;
-    public final static int O = 49;//特殊墙
+    public final static int wA = 50;
+    public final static int wB = 49;//特殊墙
     //门
-    public final static int D = 51;//黄门
-    public final static int E = 52;//蓝门
-    public final static int F = 53;//红门
-    public final static int G = 56;//铁门
-    public final static int Z = 57;//特殊门
-    //武器
-    public final static int A = 60;//铁剑
-    public final static int C = 61;//铁盾
+    public final static int dA = 51;//黄门
+    public final static int dB = 52;//蓝门
+    public final static int dC = 53;//红门
+    public final static int dE = 56;//铁门
+    public final static int dF = 57;//特殊门
     //楼梯
-    public final static int T = 54;//上楼
-    public final static int S = 55;//下楼
+    public final static int aT = 54;//上楼
+    public final static int aS = 55;//下楼
+
+    /**
+     * 道具
+     */
+    // 钥匙
+    public final static int pA = 1;//红钥匙
+    public final static int pB = 2;//蓝钥匙
+    public final static int pC = 3;//黄钥匙
+    // 血
+    public final static int pD = 4;//红药水
+    public final static int pE = 5;//蓝药水
+    public final static int pF = 6;//绿药水
+    //结晶
+    public final static int pG = 7;//红结晶
+    public final static int pH = 8;//蓝结晶
+    //武器
+    public final static int pI = 60;//铁剑
+    public final static int pJ = 61;//铁盾
+    public final static int pK = 21;// 飞行器
+    public final static int pL = 25;// 记事本
+    public final static int pM = 29;// 幸运金币
+
     //商店
-    public final static int I = 62;
-    public final static int M = 63;
-    public final static int N = 64;
-    //    X
-    //怪物
-    public final static int a = 11;// 绿球
-    public final static int b = 12;// 红球
-    public final static int c = 13;// 魔王
-    public final static int d = 14;// 魔法警卫
-    public final static int e = 15;// 骷髅人
-    public final static int f = 16;// 骷髅士兵
-    public final static int r = 28;// 骷髅队长
-    public final static int g = 17;// 小蝙蝠
-    public final static int h = 18;// 大蝙蝠
-    public final static int i = 19;// 低级法师
-    public final static int j = 20;// 中级卫兵
-    public final static int q = 27;// 低级卫兵
-    public final static int s = 30;// 高级法师
-    public final static int t = 31;// 黑球
-    public final static int u = 32;// 兽人
-    public final static int v = 33;// 石头人
-    public final static int w = 34;// 吸血鬼
-    public final static int x = 35;// 幽灵
-    public final static int y = 36;// 低级卫兵
-    public final static int z = 37;// 兽人武士
+    public final static int sA = 62;
+    public final static int sB = 63;
+    public final static int sC = 64;
+    /**
+     * 怪物
+     */
+    public final static int mA = 11;// 绿球
+    public final static int mB = 12;// 红球
+    public final static int mC = 13;// 魔王
+    public final static int mD = 14;// 魔法警卫
+    public final static int mE = 15;// 骷髅人
+    public final static int mF = 16;// 骷髅士兵
+    public final static int mR = 28;// 骷髅队长
+    public final static int mG = 17;// 小蝙蝠
+    public final static int mH = 18;// 大蝙蝠
+    public final static int mI = 19;// 低级法师
+    public final static int mJ = 20;// 中级卫兵
+    public final static int mQ = 27;// 低级卫兵
+    public final static int mS = 30;// 高级法师
+    public final static int mT = 31;// 黑球
+    public final static int mU = 32;// 兽人
+    public final static int mV = 33;// 石头人
+    public final static int mW = 34;// 吸血鬼
+    public final static int mX = 35;// 幽灵
+    public final static int mY = 36;// 低级卫兵
+    public final static int mZ = 37;// 兽人武士
+    //pK,nA,pL,nB,pM,nC
 
-
-    public final static int k = 21;// 飞行器
-    public final static int o = 25;// 记事本
-    public final static int p = 29;// 幸运金币
-
-    public final static int l = 22;// 小偷
-    public final static int m = 23;// 奸商
-    public final static int n = 24;// 老头
+    /**
+     * npc
+     */
+    public final static int nA = 22;// 小偷
+    public final static int nB = 23;// 奸商
+    public final static int nC = 24;// 老头
 
     static {
         Integer[][] map0 = new Integer[][]{
-                {T, H, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, p, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {L, L, L, L, L, L, L, L, L, L, L}
+                {aT, hr, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, pM, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA}
         };
         motemap.put(0, map0);
 
         Integer[][] map1 = new Integer[][]{
-                {T, L, a, b, a, L, L, L, L, L, L},
-                {Q, Q, Q, Q, Q, Q, Q, Q, Q, Q, L},
-                {U, L, L, D, L, Q, J, Y, L, Q, L},
-                {L, e, L, Q, L, Q, K, U, L, Q, L},
-                {Q, D, Q, Q, L, Q, Q, Q, D, Q, L},
-                {Y, L, L, Q, L, D, g, i, g, Q, L},
-                {L, f, L, Q, L, Q, Q, Q, Q, Q, L},
-                {Q, D, Q, Q, L, L, L, L, L, L, L},
-                {L, L, L, Q, Q, D, Q, Q, Q, D, Q},
-                {U, L, Y, Q, Y, L, L, Q, L, g, L},
-                {U, k, Y, Q, L, H, L, Q, a, V, a}
+                {aT, rA, mA, mB, mA, rA, rA, rA, rA, rA, rA},
+                {wA, wA, wA, wA, wA, wA, wA, wA, wA, wA, rA},
+                {pD, rA, rA, dA, rA, wA, pG, pC, rA, wA, rA},
+                {rA, mE, rA, wA, rA, wA, pH, pD, rA, wA, rA},
+                {wA, dA, wA, wA, rA, wA, wA, wA, dA, wA, rA},
+                {pC, rA, rA, wA, rA, dA, mG, mI, mG, wA, rA},
+                {rA, mF, rA, wA, rA, wA, wA, wA, wA, wA, rA},
+                {wA, dA, wA, wA, rA, rA, rA, rA, rA, rA, rA},
+                {rA, rA, rA, wA, wA, dA, wA, wA, wA, dA, wA},
+                {pD, rA, pC, wA, pC, rA, rA, wA, rA, mG, rA},
+                {pD, pK, pC, wA, rA, hr, rA, wA, mA, pE, mA}
         };
         motemap.put(1, map1);
 
         Integer[][] map2 = new Integer[][]{
-                {S, L, E, L, L, L, L, L, L, L, L},
-                {H, L, Q, Q, L, j, L, j, L, Q, Q},
-                {L, Q, Q, Q, Q, Q, L, Q, Q, Q, Q},
-                {L, Q, Y, Y, Q, L, L, L, Q, L, n},
-                {L, Q, Y, L, G, L, L, L, G, L, L},
-                {L, Q, Q, Q, Q, L, L, L, Q, Q, Q},
-                {L, Q, l, L, Q, L, L, L, Q, L, m},
-                {L, Q, L, L, G, L, L, L, G, L, L},
-                {L, Q, Q, Q, Q, L, L, L, Q, Q, Q},
-                {L, Q, V, V, Q, L, L, L, Q, L, L},
-                {T, Q, V, L, G, L, L, L, G, L, L}
+                {aS, rA, dB, rA, rA, rA, rA, rA, rA, rA, rA},
+                {hr, rA, wA, wA, rA, mJ, rA, mJ, rA, wA, wA},
+                {rA, wA, wA, wA, wA, wA, rA, wA, wA, wA, wA},
+                {rA, wA, pC, pC, wA, rA, rA, rA, wA, rA, nC},
+                {rA, wA, pC, rA, dE, rA, rA, rA, dE, rA, rA},
+                {rA, wA, wA, wA, wA, rA, rA, rA, wA, wA, wA},
+                {rA, wA, nA, rA, wA, rA, rA, rA, wA, rA, nB},
+                {rA, wA, rA, rA, dE, rA, rA, rA, dE, rA, rA},
+                {rA, wA, wA, wA, wA, rA, rA, rA, wA, wA, wA},
+                {rA, wA, pE, pE, wA, rA, rA, rA, wA, rA, rA},
+                {aT, wA, pE, rA, dE, rA, rA, rA, dE, rA, rA}
         };
         motemap.put(2, map2);
         Integer[][] map3 = new Integer[][]{
-                {Y, K, Q, Y, V, Y, Q, L, Q, L, U},
-                {L, U, Q, V, Y, V, Q, L, D, g, L},
-                {i, L, Q, Y, B, Y, Q, L, Q, Q, Q},
-                {D, Q, Q, Q, L, Q, Q, L, Q, L, n},
-                {L, L, g, L, L, L, a, L, L, L, L},
-                {D, Q, Q, L, L, L, Q, L, Q, Q, Q},
-                {e, L, Q, Q, L, Q, Q, L, Q, L, U},
-                {L, Y, Q, L, X, L, Q, L, D, i, Y},
-                {U, J, Q, L, L, L, Q, L, Q, Q, Q},
-                {Q, Q, Q, Q, L, Q, Q, b, Q, L, L},
-                {S, H, L, L, L, L, Q, L, D, L, T}
+                {pC, pH, wA, pC, pE, pC, wA, rA, wA, rA, pD},
+                {rA, pD, wA, pE, pC, pE, wA, rA, dA, mG, rA},
+                {mI, rA, wA, pC, pB, pC, wA, rA, wA, wA, wA},
+                {dA, wA, wA, wA, rA, wA, wA, rA, wA, rA, nC},
+                {rA, rA, mG, rA, rA, rA, mA, rA, rA, rA, rA},
+                {dA, wA, wA, rA, rA, rA, wA, rA, wA, wA, wA},
+                {mE, rA, wA, wA, rA, wA, wA, rA, wA, rA, pD},
+                {rA, pC, wA, rA, rB, rA, wA, rA, dA, mI, pC},
+                {pD, pG, wA, rA, rA, rA, wA, rA, wA, wA, wA},
+                {wA, wA, wA, wA, rA, wA, wA, mB, wA, rA, rA},
+                {aS, hr, rA, rA, rA, rA, wA, rA, dA, rA, aT}
         };
         motemap.put(3, map3);
         Integer[][] map4 = new Integer[][]{
-                {L, B, L, Q, I, M, N, Q, L, n, L},
-                {U, L, Y, Q, L, L, L, Q, Y, L, V},
-                {L, L, L, Q, L, L, L, Q, L, f, L},
-                {Q, D, Q, Q, Q, E, Q, Q, Q, D, Q},
-                {L, i, L, D, L, b, L, L, e, L, L},
-                {L, L, L, Q, Q, Q, Q, Q, Q, Q, Q},
-                {b, L, a, L, L, L, L, L, L, L, L},
-                {D, Q, Q, D, Q, Q, Q, D, Q, Q, D},
-                {L, Q, L, g, L, Q, L, i, L, Q, L},
-                {L, Q, a, L, Y, Q, J, L, U, Q, H},
-                {T, Q, Y, a, Y, Q, L, a, L, Q, S}
+                {rA, pB, rA, wA, sA, sB, sC, wA, rA, nC, rA},
+                {pD, rA, pC, wA, rA, rA, rA, wA, pC, rA, pE},
+                {rA, rA, rA, wA, rA, rA, rA, wA, rA, mF, rA},
+                {wA, dA, wA, wA, wA, dB, wA, wA, wA, dA, wA},
+                {rA, mI, rA, dA, rA, mB, rA, rA, mE, rA, rA},
+                {rA, rA, rA, wA, wA, wA, wA, wA, wA, wA, wA},
+                {mB, rA, mA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {dA, wA, wA, dA, wA, wA, wA, dA, wA, wA, dA},
+                {rA, wA, rA, mG, rA, wA, rA, mI, rA, wA, rA},
+                {rA, wA, mA, rA, pC, wA, pG, rA, pD, wA, hr},
+                {aT, wA, pC, mA, pC, wA, rA, mA, rA, wA, aS}
         };
         motemap.put(4, map4);
         Integer[][] map5 = new Integer[][]{
-                {T, Q, L, b, D, L, Q, L, L, D, L},
-                {L, Q, L, L, Q, Y, Q, a, a, Q, b},
-                {L, D, g, L, Q, L, Q, Y, Y, Q, L},
-                {Q, Q, Q, D, Q, g, Q, Y, Y, Q, L},
-                {Y, L, i, L, Q, L, Q, Q, Q, Q, L},
-                {Y, L, L, g, Q, L, L, L, L, L, L},
-                {Q, f, Q, Q, Q, L, Q, Q, Q, Q, b},
-                {L, L, L, L, Q, a, Q, L, L, L, L},
-                {K, Y, U, o, Q, L, Q, D, Q, Q, Q},
-                {Q, Q, Q, Q, Q, L, Q, L, Q, L, L},
-                {S, H, L, L, L, L, Q, L, O, L, A}
+                {aT, wA, rA, mB, dA, rA, wA, rA, rA, dA, rA},
+                {rA, wA, rA, rA, wA, pC, wA, mA, mA, wA, mB},
+                {rA, dA, mG, rA, wA, rA, wA, pC, pC, wA, rA},
+                {wA, wA, wA, dA, wA, mG, wA, pC, pC, wA, rA},
+                {pC, rA, mI, rA, wA, rA, wA, wA, wA, wA, rA},
+                {pC, rA, rA, mG, wA, rA, rA, rA, rA, rA, rA},
+                {wA, mF, wA, wA, wA, rA, wA, wA, wA, wA, mB},
+                {rA, rA, rA, rA, wA, mA, wA, rA, rA, rA, rA},
+                {pH, pC, pD, pL, wA, rA, wA, dA, wA, wA, wA},
+                {wA, wA, wA, wA, wA, rA, wA, rA, wA, rA, rA},
+                {aS, hr, rA, rA, rA, rA, wA, rA, wB, rA, pI}
         };
         motemap.put(5, map5);
         Integer[][] map6 = new Integer[][]{
-                {S, Q, Y, Y, Q, L, i, L, Y, a, L},
-                {H, Q, Y, Y, Q, L, Q, Q, Q, Q, D},
-                {L, Q, Q, b, Q, L, Q, U, L, e, L},
-                {L, D, D, L, D, L, Q, m, L, L, g},
-                {L, Q, Q, Q, Q, L, Q, Q, Q, Q, Q},
-                {L, L, b, i, L, Y, L, e, f, L, L},
-                {Q, Q, Q, Q, Q, L, Q, Q, Q, Q, L},
-                {i, L, L, n, Q, L, D, D, L, D, L},
-                {L, g, L, K, Q, L, Q, Q, b, Q, b},
-                {D, Q, Q, Q, Q, L, Q, L, L, Q, L},
-                {L, a, L, L, e, L, Q, U, U, Q, T}
+                {aS, wA, pC, pC, wA, rA, mI, rA, pC, mA, rA},
+                {hr, wA, pC, pC, wA, rA, wA, wA, wA, wA, dA},
+                {rA, wA, wA, mB, wA, rA, wA, pD, rA, mE, rA},
+                {rA, dA, dA, rA, dA, rA, wA, nB, rA, rA, mG},
+                {rA, wA, wA, wA, wA, rA, wA, wA, wA, wA, wA},
+                {rA, rA, mB, mI, rA, pC, rA, mE, mF, rA, rA},
+                {wA, wA, wA, wA, wA, rA, wA, wA, wA, wA, rA},
+                {mI, rA, rA, nC, wA, rA, dA, dA, rA, dA, rA},
+                {rA, mG, rA, pH, wA, rA, wA, wA, mB, wA, mB},
+                {dA, wA, wA, wA, wA, rA, wA, rA, rA, wA, rA},
+                {rA, mA, rA, rA, mE, rA, wA, pD, pD, wA, aT}
         };
         motemap.put(6, map6);
         Integer[][] map7 = new Integer[][]{
-                {T, Q, J, Q, L, m, L, Q, Y, Q, a},
-                {L, Q, U, Q, L, L, L, Q, Y, Q, b},
-                {L, Q, g, Q, b, Q, f, Q, U, Q, a},
-                {L, Q, L, Q, L, Q, L, Q, L, Q, L},
-                {D, Q, D, Q, E, Q, D, Q, e, Q, D},
-                {L, f, L, i, L, L, L, L, L, L, L},
-                {L, Q, L, Q, D, Q, D, Q, f, Q, D},
-                {L, Q, L, Q, L, Q, L, Q, L, Q, L},
-                {L, Q, L, Q, g, Q, b, Q, V, Q, L},
-                {a, Q, a, Q, Y, Q, i, Q, Y, Q, H},
-                {L, b, L, Q, Y, Q, V, Q, Y, Q, S}
+                {aT, wA, pG, wA, rA, nB, rA, wA, pC, wA, mA},
+                {rA, wA, pD, wA, rA, rA, rA, wA, pC, wA, mB},
+                {rA, wA, mG, wA, mB, wA, mF, wA, pD, wA, mA},
+                {rA, wA, rA, wA, rA, wA, rA, wA, rA, wA, rA},
+                {dA, wA, dA, wA, dB, wA, dA, wA, mE, wA, dA},
+                {rA, mF, rA, mI, rA, rA, rA, rA, rA, rA, rA},
+                {rA, wA, rA, wA, dA, wA, dA, wA, mF, wA, dA},
+                {rA, wA, rA, wA, rA, wA, rA, wA, rA, wA, rA},
+                {rA, wA, rA, wA, mG, wA, mB, wA, pE, wA, rA},
+                {mA, wA, mA, wA, pC, wA, mI, wA, pC, wA, hr},
+                {rA, mB, rA, wA, pC, wA, pE, wA, pC, wA, aS}
         };
         motemap.put(7, map7);
         Integer[][] map8 = new Integer[][]{
-                {S, L, D, D, L, T, L, Q, Y, L, Y},
-                {H, L, Q, Q, L, L, a, Q, L, R, L},
-                {D, Q, Q, Q, Q, D, Q, Q, V, L, U},
-                {L, Q, Y, Y, Y, L, L, Q, Q, Z, Q},
-                {U, Q, Q, Q, Q, Q, i, Q, q, L, q},
-                {L, b, a, b, L, Q, L, Q, L, L, L},
-                {Q, Q, Q, Q, D, Q, g, Q, Q, E, Q},
-                {L, L, L, g, L, e, L, i, L, L, L},
-                {D, Q, Q, Q, Q, Q, Q, Q, Q, Q, D},
-                {a, L, Q, J, Y, Q, B, U, Q, L, e},
-                {L, g, E, Y, K, Q, Y, L, D, f, L}
+                {aS, rA, dA, dA, rA, aT, rA, wA, pC, rA, pC},
+                {hr, rA, wA, wA, rA, rA, mA, wA, rA, pA, rA},
+                {dA, wA, wA, wA, wA, dA, wA, wA, pE, rA, pD},
+                {rA, wA, pC, pC, pC, rA, rA, wA, wA, dF, wA},
+                {pD, wA, wA, wA, wA, wA, mI, wA, mQ, rA, mQ},
+                {rA, mB, mA, mB, rA, wA, rA, wA, rA, rA, rA},
+                {wA, wA, wA, wA, dA, wA, mG, wA, wA, dB, wA},
+                {rA, rA, rA, mG, rA, mE, rA, mI, rA, rA, rA},
+                {dA, wA, wA, wA, wA, wA, wA, wA, wA, wA, dA},
+                {mA, rA, wA, pG, pC, wA, pB, pD, wA, rA, mE},
+                {rA, mG, dB, pC, pH, wA, pC, rA, dA, mF, rA}
         };
         motemap.put(8, map8);
         Integer[][] map9 = new Integer[][]{
-                {L, L, e, D, L, S, L, D, a, L, U},
-                {L, Y, L, Q, L, H, L, Q, L, a, L},
-                {f, Q, Q, Q, Q, E, Q, Q, Q, Q, L},
-                {L, Y, L, Q, Y, L, Y, D, D, L, L},
-                {K, L, g, D, L, J, L, Q, Q, O, Q},
-                {Q, Q, Q, Q, Q, Q, b, Q, L, L, f},
-                {Y, L, D, f, Y, Q, L, Q, C, Q, L},
-                {f, L, Q, L, L, Q, L, Q, Q, Q, D},
-                {D, Q, Q, Q, D, Q, L, Q, Y, L, i},
-                {L, U, Q, L, e, Q, g, Q, L, e, L},
-                {T, L, E, L, L, D, L, D, i, L, U}
+                {rA, rA, mE, dA, rA, aS, rA, dA, mA, rA, pD},
+                {rA, pC, rA, wA, rA, hr, rA, wA, rA, mA, rA},
+                {mF, wA, wA, wA, wA, dB, wA, wA, wA, wA, rA},
+                {rA, pC, rA, wA, pC, rA, pC, dA, dA, rA, rA},
+                {pH, rA, mG, dA, rA, pG, rA, wA, wA, wB, wA},
+                {wA, wA, wA, wA, wA, wA, mB, wA, rA, rA, mF},
+                {pC, rA, dA, mF, pC, wA, rA, wA, pJ, wA, rA},
+                {mF, rA, wA, rA, rA, wA, rA, wA, wA, wA, dA},
+                {dA, wA, wA, wA, dA, wA, rA, wA, pC, rA, mI},
+                {rA, pD, wA, rA, mE, wA, mG, wA, rA, mE, rA},
+                {aT, rA, dB, rA, rA, dA, rA, dA, mI, rA, pD}
         };
         motemap.put(9, map9);
         Integer[][] map10 = new Integer[][]{
-                {L, L, L, L, L, L, L, L, L, L, L},
-                {Q, Q, Q, Q, L, L, L, Q, Q, Q, Q},
-                {e, e, e, Q, Q, L, Q, Q, e, e, e},
-                {L, f, L, Z, L, r, L, Z, L, f, L},
-                {Q, Q, Q, Q, L, L, L, Q, Q, Q, Q},
-                {e, J, e, Q, Q, L, Q, Q, e, K, e},
-                {L, f, L, Q, Q, L, Q, Q, L, f, L},
-                {L, L, L, Q, Q, L, Q, Q, L, L, L},
-                {D, Q, D, Q, Q, F, Q, Q, D, Q, D},
-                {H, Q, L, Q, L, L, L, Q, L, Q, L},
-                {S, Q, L, i, L, L, L, i, L, Q, V}
+                {rA, rA, rA, rA, rA, rA, rA, rA, rA, rA, rA},
+                {wA, wA, wA, wA, rA, rA, rA, wA, wA, wA, wA},
+                {mE, mE, mE, wA, wA, rA, wA, wA, mE, mE, mE},
+                {rA, mF, rA, dF, rA, mR, rA, dF, rA, mF, rA},
+                {wA, wA, wA, wA, rA, rA, rA, wA, wA, wA, wA},
+                {mE, pG, mE, wA, wA, rA, wA, wA, mE, pH, mE},
+                {rA, mF, rA, wA, wA, rA, wA, wA, rA, mF, rA},
+                {rA, rA, rA, wA, wA, rA, wA, wA, rA, rA, rA},
+                {dA, wA, dA, wA, wA, dC, wA, wA, dA, wA, dA},
+                {hr, wA, rA, wA, rA, rA, rA, wA, rA, wA, rA},
+                {aS, wA, rA, mI, rA, rA, rA, mI, rA, wA, pE}
         };
         motemap.put(10, map10);
         Integer[][] map11 = new Integer[][]{
-                {L, L, L, Q, J, L, D, L, Q, U, Y},
-                {L, 0, L, Q, L, g, Q, u, Q, L, L},
-                {L, L, L, Q, D, Q, Q, L, D, L, L},
-                {Q, Z, Q, Q, L, h, Q, Q, Q, Q, t},
-                {s, L, s, Q, u, L, D, s, L, Q, L},
-                {L, L, L, Q, Q, Q, Q, L, U, Q, L},
-                {V, L, L, h, L, L, D, t, L, Q, L},
-                {Q, E, Q, Q, Q, Q, Q, Q, Q, Q, h},
-                {L, h, L, t, D, L, L, L, L, g, L},
-                {Y, L, L, L, Q, H, Q, Q, D, Q, L},
-                {Y, Y, Y, Y, Q, S, Q, V, h, Q, T}
+                {rA, rA, rA, wA, pG, rA, dA, rA, wA, pD, pC},
+                {rA, 0, rA, wA, rA, mG, wA, mU, wA, rA, rA},
+                {rA, rA, rA, wA, dA, wA, wA, rA, dA, rA, rA},
+                {wA, dF, wA, wA, rA, mH, wA, wA, wA, wA, mT},
+                {mS, rA, mS, wA, mU, rA, dA, mS, rA, wA, rA},
+                {rA, rA, rA, wA, wA, wA, wA, rA, pD, wA, rA},
+                {pE, rA, rA, mH, rA, rA, dA, mT, rA, wA, rA},
+                {wA, dB, wA, wA, wA, wA, wA, wA, wA, wA, mH},
+                {rA, mH, rA, mT, dA, rA, rA, rA, rA, mG, rA},
+                {pC, rA, rA, rA, wA, hr, wA, wA, dA, wA, rA},
+                {pC, pC, pC, pC, wA, aS, wA, pE, mH, wA, aT}
         };
         motemap.put(11, map11);
         Integer[][] map12 = new Integer[][]{
-                {m, O, L, Q, Y, J, Y, Q, L, O, n},
-                {Q, Q, t, Q, L, Q, L, Q, L, Q, Q},
-                {L, L, L, Q, s, L, s, Q, L, u, L},
-                {D, Q, Q, Q, Q, D, Q, Q, Q, Q, L},
-                {L, s, L, D, L, u, L, Q, U, L, h},
-                {Q, Q, Q, Q, L, L, s, D, L, K, L},
-                {Y, Y, L, Q, L, V, L, Q, Y, L, u},
-                {Y, B, L, Q, Q, Q, Q, Q, E, Q, D},
-                {L, L, u, Q, I, M, N, Q, t, L, u},
-                {Q, Q, D, Q, U, L, U, Q, Q, L, Q},
-                {T, L, L, g, L, L, L, g, L, H, S}
+                {nB, wB, rA, wA, pC, pG, pC, wA, rA, wB, nC},
+                {wA, wA, mT, wA, rA, wA, rA, wA, rA, wA, wA},
+                {rA, rA, rA, wA, mS, rA, mS, wA, rA, mU, rA},
+                {dA, wA, wA, wA, wA, dA, wA, wA, wA, wA, rA},
+                {rA, mS, rA, dA, rA, mU, rA, wA, pD, rA, mH},
+                {wA, wA, wA, wA, rA, rA, mS, dA, rA, pH, rA},
+                {pC, pC, rA, wA, rA, pE, rA, wA, pC, rA, mU},
+                {pC, pB, rA, wA, wA, wA, wA, wA, dB, wA, dA},
+                {rA, rA, mU, wA, sA, sB, sC, wA, mT, rA, mU},
+                {wA, wA, dA, wA, pD, rA, pD, wA, wA, rA, wA},
+                {aT, rA, rA, mG, rA, rA, rA, mG, rA, hr, aS}
         };
         motemap.put(12, map12);
         Integer[][] map13 = new Integer[][]{
-                {P, P, P, P, P, P, P, P, P, P, P},
-                {P, P, P, P, P, P, P, P, P, P, P},
-                {P, P, P, P, Q, Q, Q, P, P, P, P},
-                {P, P, P, Q, Q, Q, Q, Q, P, P, P},
-                {P, P, P, Q, Q, 0, Q, Q, P, P, P},
-                {P, P, P, Q, Q, P, Q, Q, P, P, P},
-                {P, P, P, P, Q, P, Q, P, P, P, P},
-                {P, P, P, P, P, P, P, P, P, P, P},
-                {P, P, P, P, P, P, P, P, P, P, P},
-                {Q, Q, Q, Q, Q, D, Q, Q, Q, Q, Q},
-                {S, H, L, L, L, L, L, L, L, L, T}
+                {rC, rC, rC, rC, rC, rC, rC, rC, rC, rC, rC},
+                {rC, rC, rC, rC, rC, rC, rC, rC, rC, rC, rC},
+                {rC, rC, rC, rC, wA, wA, wA, rC, rC, rC, rC},
+                {rC, rC, rC, wA, wA, wA, wA, wA, rC, rC, rC},
+                {rC, rC, rC, wA, wA, 0, wA, wA, rC, rC, rC},
+                {rC, rC, rC, wA, wA, rC, wA, wA, rC, rC, rC},
+                {rC, rC, rC, rC, wA, rC, wA, rC, rC, rC, rC},
+                {rC, rC, rC, rC, rC, rC, rC, rC, rC, rC, rC},
+                {rC, rC, rC, rC, rC, rC, rC, rC, rC, rC, rC},
+                {wA, wA, wA, wA, wA, dA, wA, wA, wA, wA, wA},
+                {aS, hr, rA, rA, rA, rA, rA, rA, rA, rA, aT}
         };
         motemap.put(13, map13);
         Integer[][] map14 = new Integer[][]{
-                {z, L, z, Q, K, Y, U, Q, Y, Y, Y},
-                {L, z, L, Q, t, Q, z, Q, L, L, Y},
-                {Q, L, L, Q, L, Q, L, Q, Q, D, Q},
-                {Q, E, Q, Q, E, Q, D, Q, L, z, L},
-                {U, L, L, h, L, v, L, h, L, L, L},
-                {L, t, L, Q, Q, D, Q, Q, U, L, u},
-                {D, Q, D, Q, L, L, L, Q, Q, Q, D},
-                {L, Q, L, u, L, D, L, t, L, t, L},
-                {s, Q, s, Q, Q, O, Q, Q, E, Q, Q},
-                {L, Q, L, Q, U, L, L, Q, L, L, H},
-                {E, Q, L, D, L, T, L, Q, L, L, S}
+                {mZ, rA, mZ, wA, pH, pC, pD, wA, pC, pC, pC},
+                {rA, mZ, rA, wA, mT, wA, mZ, wA, rA, rA, pC},
+                {wA, rA, rA, wA, rA, wA, rA, wA, wA, dA, wA},
+                {wA, dB, wA, wA, dB, wA, dA, wA, rA, mZ, rA},
+                {pD, rA, rA, mH, rA, mV, rA, mH, rA, rA, rA},
+                {rA, mT, rA, wA, wA, dA, wA, wA, pD, rA, mU},
+                {dA, wA, dA, wA, rA, rA, rA, wA, wA, wA, dA},
+                {rA, wA, rA, mU, rA, dA, rA, mT, rA, mT, rA},
+                {mS, wA, mS, wA, wA, wB, wA, wA, dB, wA, wA},
+                {rA, wA, rA, wA, pD, rA, rA, wA, rA, rA, hr},
+                {dB, wA, rA, dA, rA, aT, rA, wA, rA, rA, aS}
         };
         motemap.put(14, map14);
 
         Integer[][] map15 = new Integer[][]{
-                {K, z, L, D, L, T, L, Q, l, L, L},
-                {u, L, L, Q, L, L, L, Q, L, L, t},
-                {L, L, t, Q, Q, Z, Q, Q, Q, Q, D},
-                {D, Q, Q, Q, 0, 0, 0, Q, h, L, L},
-                {L, Q, Y, Q, 0, 0, 0, Q, L, h, L},
-                {L, Q, B, Q, 0, 0, 0, Q, D, Q, s},
-                {t, Q, Y, Q, L, L, L, Q, L, Q, L},
-                {L, Q, L, Q, L, L, L, Q, L, Q, V},
-                {L, D, L, Q, Q, L, Q, Q, D, Q, Q},
-                {h, Q, h, Q, L, H, L, Q, L, g, L},
-                {L, s, L, Q, L, S, L, D, g, L, m}
+                {pH, mZ, rA, dA, rA, aT, rA, wA, nA, rA, rA},
+                {mU, rA, rA, wA, rA, rA, rA, wA, rA, rA, mT},
+                {rA, rA, mT, wA, wA, dF, wA, wA, wA, wA, dA},
+                {dA, wA, wA, wA, 0, 0, 0, wA, mH, rA, rA},
+                {rA, wA, pC, wA, 0, 0, 0, wA, rA, mH, rA},
+                {rA, wA, pB, wA, 0, 0, 0, wA, dA, wA, mS},
+                {mT, wA, pC, wA, rA, rA, rA, wA, rA, wA, rA},
+                {rA, wA, rA, wA, rA, rA, rA, wA, rA, wA, pE},
+                {rA, dA, rA, wA, wA, rA, wA, wA, dA, wA, wA},
+                {mH, wA, mH, wA, rA, hr, rA, wA, rA, mG, rA},
+                {rA, mS, rA, wA, rA, aS, rA, dA, mG, rA, nB}
         };
         motemap.put(15, map15);
         Integer[][] map16 = new Integer[][]{
-                {y, h, L, Q, L, S, L, Q, L, L, h},
-                {y, s, L, D, L, H, L, D, t, L, L},
-                {y, h, L, Q, u, L, Y, Q, L, L, V},
-                {Q, Q, Q, Q, Q, E, Q, Q, Q, D, Q},
-                {J, Y, L, Q, U, L, L, Q, L, u, L},
-                {U, L, v, D, L, z, L, Q, L, L, L},
-                {K, Y, L, Q, L, L, Y, Q, h, L, B},
-                {Q, O, Q, Q, Q, D, Q, Q, Q, D, Q},
-                {L, t, L, Q, h, L, h, Q, L, s, L},
-                {L, L, L, D, L, L, L, D, L, Q, Q},
-                {n, L, L, Q, L, T, L, Q, x, O, O}
+                {mY, mH, rA, wA, rA, aS, rA, wA, rA, rA, mH},
+                {mY, mS, rA, dA, rA, hr, rA, dA, mT, rA, rA},
+                {mY, mH, rA, wA, mU, rA, pC, wA, rA, rA, pE},
+                {wA, wA, wA, wA, wA, dB, wA, wA, wA, dA, wA},
+                {pG, pC, rA, wA, pD, rA, rA, wA, rA, mU, rA},
+                {pD, rA, mV, dA, rA, mZ, rA, wA, rA, rA, rA},
+                {pH, pC, rA, wA, rA, rA, pC, wA, mH, rA, pB},
+                {wA, wB, wA, wA, wA, dA, wA, wA, wA, dA, wA},
+                {rA, mT, rA, wA, mH, rA, mH, wA, rA, mS, rA},
+                {rA, rA, rA, dA, rA, rA, rA, dA, rA, wA, wA},
+                {nC, rA, rA, wA, rA, aT, rA, wA, mX, wB, wB}
         };
         motemap.put(16, map16);
         Integer[][] map17 = new Integer[][]{
-                {L, L, L, Q, L, T, L, Q, J, L, K},
-                {L, 0, L, Q, L, L, L, Q, L, V, L},
-                {L, L, L, Q, z, Q, h, Q, Y, L, Y},
-                {Q, Z, Q, Q, L, Q, L, Q, Q, Z, Q},
-                {y, L, y, Q, D, Q, E, Q, z, L, z},
-                {L, L, L, Q, L, Q, L, Q, L, L, L},
-                {Q, Z, Q, Q, u, Q, t, Q, Q, Z, Q},
-                {y, L, y, Q, L, L, L, Q, u, L, u},
-                {L, L, L, Q, Q, S, Q, Q, L, L, L},
-                {Q, D, Q, Q, L, L, L, Q, Q, D, Q},
-                {U, L, L, h, H, S, L, h, L, L, U}
+                {rA, rA, rA, wA, rA, aT, rA, wA, pG, rA, pH},
+                {rA, 0, rA, wA, rA, rA, rA, wA, rA, pE, rA},
+                {rA, rA, rA, wA, mZ, wA, mH, wA, pC, rA, pC},
+                {wA, dF, wA, wA, rA, wA, rA, wA, wA, dF, wA},
+                {mY, rA, mY, wA, dA, wA, dB, wA, mZ, rA, mZ},
+                {rA, rA, rA, wA, rA, wA, rA, wA, rA, rA, rA},
+                {wA, dF, wA, wA, mU, wA, mT, wA, wA, dF, wA},
+                {mY, rA, mY, wA, rA, rA, rA, wA, mU, rA, mU},
+                {rA, rA, rA, wA, wA, aS, wA, wA, rA, rA, rA},
+                {wA, dA, wA, wA, rA, rA, rA, wA, wA, dA, wA},
+                {pD, rA, rA, mH, hr, aS, rA, mH, rA, rA, pD}
         };
         motemap.put(17, map17);
         Integer[][] map18 = new Integer[][]{
-                {0, 0, 0, 0, L, S, L, 0, 0, 0, 0},
-                {0, 0, 0, 0, L, H, L, 0, 0, 0, 0},
+                {0, 0, 0, 0, rA, aS, rA, 0, 0, 0, 0},
+                {0, 0, 0, 0, rA, hr, rA, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},

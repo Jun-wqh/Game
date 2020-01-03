@@ -76,7 +76,7 @@ public class MotaPanel extends JPanel {
                         }
                     }
                     if (hero.bossEvent == 0) {
-                        DialogueEvent.bossDialogue(MotaMap.c, hero);
+                        DialogueEvent.bossDialogue(MotaMap.mC, hero);
                         hero.bossEvent = 1;
                         result = true;
                     }

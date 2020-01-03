@@ -32,7 +32,7 @@ public class Award_All extends FlyingObject implements Award {
 	public void step(){
 		y+=ySpeed;
 		
-//		if(x<=0 || x>World.WIDTH-this.width) {
+//		if(mX<=0 || mX>World.WIDTH-this.width) {
 //			xSpeed*=-1;
 //		}
 		

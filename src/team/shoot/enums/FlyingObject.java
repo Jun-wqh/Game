@@ -61,7 +61,7 @@ public abstract class FlyingObject {
     public abstract BufferedImage getImage();
 
     /**
-     * 读取图片 ctrl+c
+     * 读取图片 ctrl+mC
      */
     public static BufferedImage loadImage(String fileName) {
         try {
