@@ -78,6 +78,8 @@ public class PropertyPanel extends JPanel {
         this.add(labels[8][1]);
         labels[9][0] = new JLabel();
         this.add(labels[9][0]);
+        labels[9][1] = new JLabel();
+        this.add(labels[9][1]);
     }
 
     public void setHero(Hero hero) {
@@ -104,10 +106,14 @@ public class PropertyPanel extends JPanel {
             gold();
             hero.gold = false;
         }
+        if (hero.note) {
+            note();
+            hero.gold = true;
+        }
     }
 
     public void fly(Hero hero) {
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("飞行器");
         FlyPanel flyPanel = new FlyPanel();
         frame.add(flyPanel);
         Toolkit tk = Toolkit.getDefaultToolkit();
@@ -132,11 +138,20 @@ public class PropertyPanel extends JPanel {
         ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\26.png");
         icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         labels[8][1].setIcon(icon2);
+        JFrame frame = new JFrame("怪物图鉴");
         BookPanel bookPanel = new BookPanel();
+        frame.add(bookPanel);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screensize = tk.getScreenSize();
+        int height = screensize.height;
+        int width = screensize.width;
+        frame.setBounds(width / 2 - 180, height / 2 - 100, 500, 500);
+        frame.setLocationRelativeTo(null);
         labels[8][1].addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-//                super.mouseClicked(mE);
+                bookPanel.book(hero, frame);
+                frame.setVisible(true);
             }
         });
     }
@@ -145,5 +160,11 @@ public class PropertyPanel extends JPanel {
         ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\29.png");
         icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
         labels[9][0].setIcon(icon2);
+    }
+
+    private void note() {
+        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\25.png");
+        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
+        labels[9][1].setIcon(icon2);
     }
 }

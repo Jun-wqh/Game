@@ -36,16 +36,18 @@ public class MonstrtMap {
     public static Map<Integer, Article> articleMap = new HashMap<>();
 
     static {
-        articleMap.put(MotaMap.pA, new Article("redKey", 1, 1));
-        articleMap.put(MotaMap.pB, new Article("blueKey", 1, 1));
-        articleMap.put(MotaMap.pC, new Article("yellowKey", 1, 1));
-        articleMap.put(MotaMap.pD, new Article("hp", 100, 1));
-        articleMap.put(MotaMap.pE, new Article("hp", 200, 1));
-        articleMap.put(MotaMap.pF, new Article("hp", 400, 1));
-        articleMap.put(MotaMap.pG, new Article("atk", 1, 1));
-        articleMap.put(MotaMap.pH, new Article("def", 1, 1));
-        articleMap.put(MotaMap.pI, new Article("atk", 10, 1));
-        articleMap.put(MotaMap.pJ, new Article("def", 10, 1));
+        articleMap.put(MotaMap.pA, new Article("redKey", 1, 1));//红钥匙
+        articleMap.put(MotaMap.pB, new Article("blueKey", 1, 1));//蓝钥匙
+        articleMap.put(MotaMap.pC, new Article("yellowKey", 1, 1));//黄钥匙
+        articleMap.put(MotaMap.pD, new Article("hp", 100, 1));//红药水
+        articleMap.put(MotaMap.pE, new Article("hp", 200, 1));//蓝药水
+        articleMap.put(MotaMap.pF, new Article("hp", 400, 1));//绿药水
+        articleMap.put(MotaMap.pG, new Article("atk", 1, 1));//红结晶
+        articleMap.put(MotaMap.pH, new Article("def", 1, 1));//蓝结晶
+        articleMap.put(MotaMap.pI, new Article("atk", 10, 1));//铁剑
+        articleMap.put(MotaMap.pJ, new Article("def", 10, 1));//铁盾
+        articleMap.put(MotaMap.pN, new Article("def", 20, 1));// 银盾
+        articleMap.put(MotaMap.pO, new Article("atk", 20, 1));// 银剑
     }
 
     public static Map<Integer, Article> equipageMap = new HashMap<>();

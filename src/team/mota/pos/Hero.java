@@ -38,14 +38,17 @@ public class Hero extends Position {
                 }
             }
         }
-        /*article.put("level", map);
-        article.put("atk", 100);
-        article.put("def", 100);
+
+/*        article.put("level", map);
+        article.put("atk", 20);
+        article.put("def", 20);
         article.put("money", 0);
         article.put("hp", 1000);
         article.put("redKey", 10);
-        article.put("blueKey", 0);
+        article.put("blueKey", 10);
         article.put("yellowKey", 10);*/
+
+        //初始属性
         article.put("level", map);
         article.put("atk", 100);
         article.put("def", 100);
@@ -142,12 +145,18 @@ public class Hero extends Position {
                 case MotaMap.pH:
                 case MotaMap.pI:
                 case MotaMap.pJ:
+                case MotaMap.pN:
+                case MotaMap.pO:
                     Article article = MonstrtMap.articleMap.get(even);
                     result = this.add(article.name, article.value);
                     break;
                 //捡道具
                 case MotaMap.pK:
                     fly = true;
+                    result = true;
+                    break;
+                case MotaMap.pL:
+                    note = true;
                     result = true;
                     break;
                 case MotaMap.pM:
@@ -256,19 +265,25 @@ public class Hero extends Position {
                 //开门
                 case MotaMap.dA:
                     change = this.use("yellowKey", 1);
-                    maps[rx][ry] = MotaMap.rA;
+                    if (change) {
+                        maps[rx][ry] = MotaMap.rA;
+                    }
                     break;
                 case MotaMap.dB:
                     change = this.use("blueKey", 1);
-                    maps[rx][ry] = MotaMap.rA;
+                    if (change) {
+                        maps[rx][ry] = MotaMap.rA;
+                    }
                     break;
                 case MotaMap.dC:
                     change = this.use("redKey", 1);
-                    maps[rx][ry] = MotaMap.rA;
+                    if (change) {
+                        maps[rx][ry] = MotaMap.rA;
+                    }
                     break;
                 //进商店
                 case MotaMap.sB:
-                    Goods goods = SpEvent.buy4();
+                    Goods goods = SpEvent.buy4(this.article.get("level"));
                     if (goods != null) {
                         boolean buy = buy(goods);
                         if (buy) {
@@ -284,22 +299,7 @@ public class Hero extends Position {
                     this.article.put("level", this.article.get("level") + 1);
                     // 位置
                     maps = MotaMap.motemap.get(this.article.get("level"));
-//                    FloorEvent.up(maps,this.x,this.y );
-                    boolean flagt = false;
-                    for (int i = 0; i < maps.length; i++) {
-                        if (flagt) {
-                            break;
-                        }
-                        for (int j = 0; j < maps[i].length; j++) {
-                            if (maps[i][j] == MotaMap.hr) {
-                                this.x = i;
-                                this.y = j;
-                                flagt = true;
-                                break;
-                            }
-                        }
-                    }
-
+                    FloorEvent.change(this, MotaMap.aS);
                     level = true;
                     result = true;
                     break;
@@ -308,20 +308,7 @@ public class Hero extends Position {
                     this.article.put("level", this.article.get("level") - 1);
                     // 位置
                     maps = MotaMap.motemap.get(this.article.get("level"));
-                    boolean flags = false;
-                    for (int i = 0; i < maps.length; i++) {
-                        if (flags) {
-                            break;
-                        }
-                        for (int j = 0; j < maps[i].length; j++) {
-                            if (maps[i][j] == MotaMap.hr) {
-                                this.x = i;
-                                this.y = j;
-                                flags = true;
-                                break;
-                            }
-                        }
-                    }
+                    FloorEvent.change(this, MotaMap.aT);
                     level = true;
                     result = true;
                     break;
