@@ -51,6 +51,9 @@ public class MotaMap {
     public final static int pM = 29;// 幸运金币
     public final static int pN = 70;// 银盾
     public final static int pO = 71;// 银剑
+    public final static int pP = 72;// 熔岩护符
+    public final static int pQ = 73;// 神圣剑
+    public final static int pR = 74;// 神圣盾
 
     //商店
     public final static int sA = 62;
@@ -278,7 +281,7 @@ public class MotaMap {
                 {rC, rC, rC, rC, rC, rC, rC, rC, rC, rC, rC},
                 {rC, rC, rC, rC, wA, wA, wA, rC, rC, rC, rC},
                 {rC, rC, rC, wA, wA, wA, wA, wA, rC, rC, rC},
-                {rC, rC, rC, wA, wA, 0, wA, wA, rC, rC, rC},
+                {rC, rC, rC, wA, wA, pQ, wA, wA, rC, rC, rC},
                 {rC, rC, rC, wA, wA, rC, wA, wA, rC, rC, rC},
                 {rC, rC, rC, rC, wA, rC, wA, rC, rC, rC, rC},
                 {rC, rC, rC, rC, rC, rC, rC, rC, rC, rC, rC},

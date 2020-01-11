@@ -13,13 +13,10 @@ import java.util.Set;
 
 public class BookPanel extends JPanel {
 
-    public BookPanel() {
-        this.setLayout(new GridLayout(10, 6));
-    }
 
     public void book(Hero hero, JFrame frame) {
-        frame.setVisible(false);
         this.removeAll();
+        frame.setVisible(false);
         Integer[][] map = hero.maps;
         Map<Integer, Monster> monsterMap = MonstrtMap.monsterMap;
         Set<Integer> monsterSet = new HashSet<>();
@@ -31,6 +28,7 @@ public class BookPanel extends JPanel {
             }
         }
         ArrayList<Integer> monsterList = new ArrayList<>(monsterSet);
+        this.setLayout(new GridLayout(monsterList.size(), 6));
         JLabel[][] labels = new JLabel[10][6];
         for (int i = 0; i < monsterList.size(); i++) {
             labels[i][0] = new JLabel();

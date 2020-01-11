@@ -39,16 +39,19 @@ public class DialogueEvent {
             switch (NPC) {
                 case MotaMap.nC + "3":
                     hero.book = true;
+                    hero.msg = "获得怪物图鉴";
                     break;
                 case MotaMap.nB + "6":
                     if (flag) {
                         hero.buy("blueKey", 1, 50);
+                        hero.msg = "获得一把蓝钥匙";
                     }
                     DialogueMap.profiteerMessageMap.put(MotaMap.nB + "6", "");
                     break;
                 case MotaMap.nB + "7":
                     if (flag) {
                         hero.buy("yellowKey", 5, 50);
+                        hero.msg = "获得五把黄钥匙";
                     }
                     DialogueMap.profiteerMessageMap.put(MotaMap.nB + "7", "");
                     break;

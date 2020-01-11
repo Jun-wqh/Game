@@ -18,9 +18,11 @@ public class Hero extends Position {
     public Boolean book = false;// 图鉴
     public Boolean note = false;// 记事本
     public Boolean gold = false;// 金币
+    public Boolean magma = false;// 熔岩护符
     public Integer doubleGold = 1;
     public boolean change = false;
     public Integer bossEvent = 1;
+    public Integer buyFrequency = 1;
 
     public Hero(Integer map) {
         maps = MotaMap.motemap.get(map);
@@ -39,10 +41,10 @@ public class Hero extends Position {
             }
         }
 
-/*        article.put("level", map);
-        article.put("atk", 20);
-        article.put("def", 20);
-        article.put("money", 0);
+    /*    article.put("level", map);
+        article.put("atk", 120);
+        article.put("def", 120);
+        article.put("money", 100);
         article.put("hp", 1000);
         article.put("redKey", 10);
         article.put("blueKey", 10);
@@ -59,11 +61,11 @@ public class Hero extends Position {
         article.put("yellowKey", 1);
     }
 
-    public boolean add(String name, Integer count) {
-        if (name.equals("money")) {
+    public boolean add(String property, Integer count, int times) {
+        if ("money".equals(property)) {
             count = doubleGold * count;
         }
-        article.put(name, article.get(name) + count);
+        article.put(property, article.get(property) + count * times);
         return true;
     }
 
@@ -81,6 +83,7 @@ public class Hero extends Position {
         if (article.get("money") >= money) {
             article.put(name, article.get(name) + count);
             article.put("money", article.get("money") - money);
+            msg = "购买采购，增加" + count + name;
             return true;
         }
         return false;
@@ -143,25 +146,39 @@ public class Hero extends Position {
                 case MotaMap.pF:
                 case MotaMap.pG:
                 case MotaMap.pH:
+                    Article articleA = MonstrtMap.articleMap.get(even);
+                    int times = 1;
+                    if ("hp".equals(articleA.property) || even == MotaMap.pG || even == MotaMap.pH) {
+                        times = this.article.get("level") / 10 + 1;
+                    }
+                    result = this.add(articleA.property, articleA.value, times);
+                    break;
+                //装备
                 case MotaMap.pI:
                 case MotaMap.pJ:
                 case MotaMap.pN:
                 case MotaMap.pO:
-                    Article article = MonstrtMap.articleMap.get(even);
-                    result = this.add(article.name, article.value);
+                case MotaMap.pQ:
+                case MotaMap.pR:
+                    Article articleB = MonstrtMap.articleMap.get(even);
+                    result = this.add(articleB.property, articleB.value, 1);
+                    msg = "获得" + articleB.name + ",增加" + articleB.value + articleB.property;
                     break;
                 //捡道具
                 case MotaMap.pK:
                     fly = true;
                     result = true;
+                    msg = "获得飞行器";
                     break;
                 case MotaMap.pL:
                     note = true;
                     result = true;
+                    msg = "获得笔记本";
                     break;
                 case MotaMap.pM:
                     gold = true;
                     doubleGold = 2;
+                    msg = "获得幸运金币";
                     result = true;
                     break;
                 //boss事件
@@ -174,7 +191,7 @@ public class Hero extends Position {
                         if (checkatk) {
                             result = this.atk(monster);
                             if (result) {
-                                this.add("money", monster.money);
+                                this.add("money", monster.money, 1);
                             }
                         }
                     }
@@ -206,15 +223,21 @@ public class Hero extends Position {
                         result = this.atk(monster);
                         if (result) {
                             if (even == MotaMap.mQ) {
-                                GuarderEven.lowGuarder(this);
+                                GuarderEven.guard(this, even, MotaMap.dF);
                             }
                             if (even == MotaMap.mJ) {
-                                GuarderEven.middleGuarder(this);
+                                GuarderEven.guard(this, even, MotaMap.dE);
+                            }
+                            if (even == MotaMap.mS) {
+                                GuarderEven.guard(this, even, MotaMap.dF);
                             }
                             if (this.article.get("level") == 10) {
-                                GuarderEven.foolr10Guarder(this);
+                                GuarderEven.foolr10Guard(this);
                             }
-                            this.add("money", monster.money);
+                            if (this.article.get("level") == 11 && even == MotaMap.mS) {
+                                GuarderEven.foolr11Guard(this);
+                            }
+                            this.add("money", monster.money, 1);
                             this.maps[rx][ry] = MotaMap.rA;
                             result = false;
                             change = true;
@@ -283,12 +306,13 @@ public class Hero extends Position {
                     break;
                 //进商店
                 case MotaMap.sB:
-                    Goods goods = SpEvent.buy4(this.article.get("level"));
+                    Goods goods = SpEvent.buy4(this.article.get("level"), buyFrequency);
                     if (goods != null) {
                         boolean buy = buy(goods);
                         if (buy) {
                             SpEvent.money += SpEvent.space;
                             SpEvent.space += 20;
+                            buyFrequency += 1;
                         } else {
                             msg = "钱不够！";
                         }

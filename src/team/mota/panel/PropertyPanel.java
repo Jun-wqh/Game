@@ -4,12 +4,8 @@ import team.mota.pos.Hero;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author Jun-wqh seeyul
@@ -17,7 +13,7 @@ import java.util.Set;
 public class PropertyPanel extends JPanel {
 
     JLabel[][] labels;
-    Set<Integer> levelSet = new HashSet<>();
+
     /**
      * Creates mA new <code>JPanel</code> with mA double buffer
      * and mA flow layout.
@@ -80,91 +76,18 @@ public class PropertyPanel extends JPanel {
         this.add(labels[9][0]);
         labels[9][1] = new JLabel();
         this.add(labels[9][1]);
+        labels[10][0] = new JLabel();
+        this.add(labels[10][0]);
+        labels[10][1] = new JLabel();
+        this.add(labels[10][1]);
     }
 
     public void setHero(Hero hero) {
-        levelSet.add(hero.article.get("level"));
         hero.article.forEach((k, v) -> {
             if (!propertyMap.get(k).value.equals(v)) {
                 propertyMap.get(k).value = v;
                 labels[propertyMap.get(k).xx][1].setText(v.toString());
             }
         });
-        if (hero.msg != null) {
-            new ShowMessageFrame(hero.msg);
-            hero.msg = null;
-        }
-        if (hero.fly) {
-            fly(hero);
-            hero.fly = false;
-        }
-        if (hero.book) {
-            book(hero);
-            hero.book = false;
-        }
-        if (hero.gold) {
-            gold();
-            hero.gold = false;
-        }
-        if (hero.note) {
-            note();
-            hero.gold = true;
-        }
-    }
-
-    public void fly(Hero hero) {
-        JFrame frame = new JFrame("飞行器");
-        FlyPanel flyPanel = new FlyPanel();
-        frame.add(flyPanel);
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension screensize = tk.getScreenSize();
-        int height = screensize.height;
-        int width = screensize.width;
-        frame.setBounds(width / 2 - 180, height / 2 - 100, 400, 400);
-        frame.setLocationRelativeTo(null);
-        ImageIcon icon1 = new ImageIcon("src\\team\\mota\\res\\21.png");
-        icon1.setImage(icon1.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
-        labels[8][0].setIcon(icon1);
-        labels[8][0].addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                flyPanel.sync(levelSet, hero, frame, motaPanel);
-                frame.setVisible(true);
-            }
-        });
-    }
-
-    public void book(Hero hero) {
-        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\26.png");
-        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
-        labels[8][1].setIcon(icon2);
-        JFrame frame = new JFrame("怪物图鉴");
-        BookPanel bookPanel = new BookPanel();
-        frame.add(bookPanel);
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension screensize = tk.getScreenSize();
-        int height = screensize.height;
-        int width = screensize.width;
-        frame.setBounds(width / 2 - 180, height / 2 - 100, 500, 500);
-        frame.setLocationRelativeTo(null);
-        labels[8][1].addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                bookPanel.book(hero, frame);
-                frame.setVisible(true);
-            }
-        });
-    }
-
-    public void gold() {
-        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\29.png");
-        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
-        labels[9][0].setIcon(icon2);
-    }
-
-    private void note() {
-        ImageIcon icon2 = new ImageIcon("src\\team\\mota\\res\\25.png");
-        icon2.setImage(icon2.getImage().getScaledInstance(60, 50, Image.SCALE_DEFAULT));
-        labels[9][1].setIcon(icon2);
     }
 }

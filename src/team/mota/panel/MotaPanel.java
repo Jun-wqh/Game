@@ -21,11 +21,12 @@ public class MotaPanel extends JPanel {
     PropertyPanel propertyPanel;
     int level = 1;
 
-    public MotaPanel(PropertyPanel propertyPanel) {
+    public MotaPanel(PropertyPanel propertyPanel, MenuPanel menuPanel) {
         this.propertyPanel = propertyPanel;
         propertyPanel.setMotaPanel(this);
         hero = new Hero(level);
         propertyPanel.setHero(hero);
+        menuPanel.setHero(hero);
         this.setLayout(new GridLayout(11, 11));
         this.setBackground(Color.lightGray);
         hero.maps = MotaMap.motemap.get(level);
@@ -93,6 +94,7 @@ public class MotaPanel extends JPanel {
                         icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                         labels[rx][ry].setIcon(icon);
                         propertyPanel.setHero(hero);
+                        menuPanel.setHero(hero);
                         if (hero.bossEvent == 3) {
                             BossEvent.floor10Reward(hero);
                             hero.change = true;
@@ -109,9 +111,11 @@ public class MotaPanel extends JPanel {
                             }
                         }
                         propertyPanel.setHero(hero);
+                        menuPanel.setHero(hero);
                     }
                 } else {
                     propertyPanel.setHero(hero);
+                    menuPanel.setHero(hero);
                 }
                 if (hero.change) {
                     for (int i = 0; i < 11; i++) {
@@ -122,6 +126,11 @@ public class MotaPanel extends JPanel {
                         }
                     }
                     hero.change = false;
+                }
+                //提示
+                if (hero.msg != null) {
+                    new ShowMessageFrame(hero.msg);
+                    hero.msg = null;
                 }
             }
 

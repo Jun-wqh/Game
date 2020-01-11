@@ -6,25 +6,10 @@ public class SpEvent {
     public static int space = 20;
     public static int money = 20;
 
-    public static Goods buy4(Integer level) {
-        int hp = 100;
-        int atk = 2;
-        int def = 4;
-        if (level == 12) {
-            hp = 200;
-            atk = 4;
-            def = 8;
-        }
-        if (level == 32) {
-            hp = 400;
-            atk = 8;
-            def = 16;
-        }
-        if (level == 46) {
-            hp = 500;
-            atk = 10;
-            def = 20;
-        }
+    public static Goods buy4(Integer level, Integer buyFrequency) {
+        int hp = 100 * buyFrequency;
+        int atk = 2 * (level / 10 + 1);
+        int def = 4 * (level / 10 + 1);
 
         String[] options = {"增加" + hp + "点生命值", "增加" + atk + "点攻击力", "增加" + def + "点防御力", "离开"};
         int choice = JOptionPane.showOptionDialog(null, "花" + money + "金币你可以：",
