@@ -32,9 +32,12 @@ public class GobangDemo extends JPanel {
         frame.setLayout(new BorderLayout());
 
         this.setPreferredSize(new Dimension(600, 0));
-        this.setBackground(Color.decode("#f1c4cd"));
+//        this.setBackground(Color.decode("#22a2c3"));
+        this.setBackground(Color.LIGHT_GRAY);
+
         frame.add(this, BorderLayout.CENTER);
         JPanel panel = new JPanel();
+
         panel.setPreferredSize(new Dimension(100, 0));
         panel.setBackground(Color.white);
         JButton startBtn = new JButton("开始");
@@ -67,16 +70,19 @@ public class GobangDemo extends JPanel {
             graphics.drawLine(x + i * size, y, x + i * size, y + (cell - 1) * size);
             graphics.drawLine(x, y + i * size, x + (cell - 1) * size, y + i * size);
             for (int j = 0; j < cell; j++) {
-                int chessx = size * i + x;
-                int chessy = size * j + y;
-                if (chessRecord[i][j] % 2 == 1) {
-                    graphics.setColor(Color.black);
-                    graphics.fillOval(chessx - size / 2, chessy - size / 2, size, size);
-                    graphics.setColor(Color.white);
-                } else if (chessRecord[i][j] % 2 == 0 && chessRecord[i][j] != 0) {
-                    graphics.setColor(Color.white);
-                    graphics.fillOval(chessx - size / 2, chessy - size / 2, size, size);
-                    graphics.setColor(Color.black);
+                if (chessRecord != null){
+                    int chessx = size * i + x;
+                    int chessy = size * j + y;
+                    if (chessRecord[i][j] % 2 == 1) {
+                        graphics.setColor(Color.black);
+                        graphics.fillOval(chessx - size / 2, chessy - size / 2, size, size);
+                        graphics.setColor(Color.white);
+                    } else if (chessRecord[i][j] % 2 == 0 && chessRecord[i][j] != 0) {
+                        graphics.setColor(Color.white);
+                        graphics.fillOval(chessx - size / 2, chessy - size / 2, size, size);
+                        graphics.setColor(Color.black);
+                    }
+
                 }
             }
         }

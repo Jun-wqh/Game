@@ -1,5 +1,6 @@
 package team.gobang;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -39,6 +40,22 @@ public class MyActionListener implements ActionListener {
             System.out.println("开始");
         }
         if ("认输".equals(e.getActionCommand())) {
+            int num = 0;
+            for (int i = 0; i < gobang.chessRecord.length; i++) {
+                for (int j = 0; j < gobang.chessRecord[i].length; j++) {
+                    num = num < gobang.chessRecord[i][j] ? gobang.chessRecord[i][j] : num;
+                }
+            }if(num== 0){
+                JOptionPane.showMessageDialog(null, "小垃圾！", "congratulations", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            else if (num % 2 == 1) {
+                JOptionPane.showMessageDialog(null, "黑棋赢！", "congratulations", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "白棋赢！", "congratulations", JOptionPane.WARNING_MESSAGE);
+            }
+            gobang.chessRecord = new int[18][18];
+            gobang.repaint();
             System.out.println("重新开始");
         }
 
