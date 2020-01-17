@@ -13,7 +13,7 @@ public class DialogueMap {
     public static Map<String, String> profiteerMessageMap = new HashMap<>();
 
     static {
-        dialogueMessageMap.put(MotaMap.nC + "2", "老者：。");
+        dialogueMessageMap.put(MotaMap.nC + "2", "老者：。。。");
         dialogueMessageMap.put(MotaMap.nC + "3", "老者：年轻人，我看你骨骼惊奇，这本怪物图鉴就赠与你。");
         dialogueMessageMap.put(MotaMap.nC + "4", "老者：有些门不能用钥匙打开，只有当你打败它的守卫后才会自动打开。");
         dialogueMessageMap.put(MotaMap.nC + "6", "老者：你购买了礼物后再与商人对话，他会告诉你一些重要的消息。");

@@ -1,6 +1,7 @@
 package team.mota.panel;
 
 
+import team.mota.event.FloorEvent;
 import team.mota.pos.Hero;
 
 import javax.swing.*;
@@ -37,15 +38,19 @@ public class FlyPanel extends JPanel {
                 jButtons[i].addActionListener(jButton -> {
                     frame.setVisible(false);
                     // 楼层跳转
-                    hero.article.put("level", level);
-                    motaPanel.level = level;
                     hero.maps = MotaMap.motemap.get(level);
+                    motaPanel.level = level;
+                    int stairs = MotaMap.aT;
+                    if (level > hero.article.get("level")) {
+                        stairs = MotaMap.aS;
+                    }
+                    if (level == hero.article.get("level")) {
+                        return;
+                    }
+                    hero.article.put("level", level);
+                    FloorEvent.change(hero, stairs);
                     for (int x = 0; x < 11; x++) {
                         for (int y = 0; y < 11; y++) {
-                            if (hero.maps[x][y] == MotaMap.hr) {
-                                hero.x = x;
-                                hero.y = y;
-                            }
                             ImageIcon icon = new ImageIcon("src\\team\\mota\\res\\" + hero.maps[x][y] + ".png");
                             icon.setImage(icon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
                             motaPanel.labels[x][y].setIcon(icon);
@@ -53,10 +58,7 @@ public class FlyPanel extends JPanel {
                     }
                     motaPanel.propertyPanel.setHero(hero);
                 });
-
             }
         }
     }
-
-
 }

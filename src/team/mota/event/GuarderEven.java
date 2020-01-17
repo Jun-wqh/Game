@@ -9,22 +9,21 @@ import team.mota.pos.Hero;
  */
 public class GuarderEven {
 
-    //低级守卫事件
-    public static void lowGuarder(Hero hero) {
+    //守卫事件
+    public static void guard(Hero hero, Integer monter, Integer door) {
         Integer[][] map = hero.maps;
-        if (map[4][8] != MotaMap.mQ || map[4][10] != MotaMap.mQ) {
-            hero.maps[3][9] = MotaMap.rA;
-            hero.change = true;
+        int number = 0;
+        for (int j = 0; j < 11; j++) {
+            for (int k = 0; k < 11; k++) {
+                if (map[j][k].equals(monter)) {
+                    number += 1;
+                }
+            }
         }
-    }
-
-    //中级守卫事件
-    public static void middleGuarder(Hero hero) {
-        Integer[][] map = hero.maps;
-        if (map[1][5] != MotaMap.mJ || map[1][7] != MotaMap.mJ) {
+        if (number == 1) {
             for (int j = 0; j < 11; j++) {
                 for (int k = 0; k < 11; k++) {
-                    if (map[j][k] == MotaMap.dE) {
+                    if (map[j][k].equals(door)) {
                         map[j][k] = MotaMap.rA;
                     }
                 }
@@ -33,19 +32,22 @@ public class GuarderEven {
         }
     }
 
-    //高级守卫事件
-    public static void highGuarder(Hero hero) {
-
+    public static void foolr11Guard(Hero hero) {
+        Integer[][] map = hero.maps;
+        if (map[4][0] != MotaMap.mS && map[4][1] != MotaMap.mS) {
+            hero.maps[3][1] = MotaMap.rA;
+            hero.change = true;
+        }
     }
 
-    public static void foolr10Guarder(Hero hero) {
+    //第十层小怪围困事件
+    public static void foolr10Guard(Hero hero) {
         Integer[][] map = hero.maps;
         int num = 1;
         for (int i = 4; i <= 6; i++) {
             for (int j = 3; j <= 5; j++) {
                 if (map[j][i] == MotaMap.rA) {
                     num += 1;
-
                 }
             }
         }
@@ -54,4 +56,6 @@ public class GuarderEven {
             hero.change = true;
         }
     }
+
+
 }
