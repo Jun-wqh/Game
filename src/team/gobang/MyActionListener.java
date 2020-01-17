@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MyActionListener implements ActionListener {
     GobangDemo gobang;
@@ -45,11 +46,12 @@ public class MyActionListener implements ActionListener {
                 for (int j = 0; j < gobang.chessRecord[i].length; j++) {
                     num = num < gobang.chessRecord[i][j] ? gobang.chessRecord[i][j] : num;
                 }
-            }if(num== 0){
+            }
+            if (num == 0) {
+
                 JOptionPane.showMessageDialog(null, "小垃圾！", "congratulations", JOptionPane.WARNING_MESSAGE);
                 return;
-            }
-            else if (num % 2 == 1) {
+            } else if (num % 2 == 1) {
                 JOptionPane.showMessageDialog(null, "黑棋赢！", "congratulations", JOptionPane.WARNING_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "白棋赢！", "congratulations", JOptionPane.WARNING_MESSAGE);

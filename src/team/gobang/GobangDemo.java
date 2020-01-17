@@ -2,6 +2,7 @@ package team.gobang;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * @version V1.0.0
@@ -70,7 +71,7 @@ public class GobangDemo extends JPanel {
             graphics.drawLine(x + i * size, y, x + i * size, y + (cell - 1) * size);
             graphics.drawLine(x, y + i * size, x + (cell - 1) * size, y + i * size);
             for (int j = 0; j < cell; j++) {
-                if (chessRecord != null){
+                if (chessRecord != null) {
                     int chessx = size * i + x;
                     int chessy = size * j + y;
                     if (chessRecord[i][j] % 2 == 1) {
